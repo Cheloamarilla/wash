@@ -7,11 +7,12 @@ html {
 }
 
 .hero-bg {
-    background-image: linear-gradient(rgba(0, 96, 246, 0.6), rgba(0, 0, 0, 0.5)),
-                      url('../img/imagen_fondo_2.jpg');
+    background-image: linear-gradient(rgba(0, 96, 246, 0.6), rgba(0, 0, 0, 0.5)), 
+                      url('../img/img_hero.png');  /* cambiar imaegen del hero */
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-repeat: no-repeat;
+
 }
 
 .mobile-menu {
@@ -79,9 +80,18 @@ html {
 }
 
 .feature-card {
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; 
 }
 
-.feature-card:hover {
-    transform: scale(1.05);
+.feature-card:hover { 
+    transform: scale(1.05); 
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; /* es para Chrome, Safari y Opera */
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none; /* es para Internet Explorer y Edge */
+    scrollbar-width: none; /* es para Firefox */
 }

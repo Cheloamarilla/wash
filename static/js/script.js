@@ -1,28 +1,30 @@
+
+
 // Mobile Menu Toggle
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenuBtn = document.getElementById('mobile-menu-btn'); // Boton para abrir/cerrar el menu movil
 const mobileMenu = document.getElementById('mobile-menu');
 
 if (mobileMenuBtn && mobileMenu) {
     mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
+        mobileMenu.classList.toggle('active'); // activa y desactiva 
     });
 
-    // Close mobile menu when clicking on a link
-    const mobileLinks = mobileMenu.querySelectorAll('a');
+    // cuando se toca un link se cierra el menu movil
+    const mobileLinks = mobileMenu.querySelectorAll('a'); // selecciona todos los links dentro del menu movil
     mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
+        link.addEventListener('click', () => { // agrega un evento de click a cada link
+            mobileMenu.classList.remove('active'); // cierra el menu movil
         });
     });
 }
 
-// Smooth scroll for all anchor links
+// Scroll suave al tocar links con # anclas)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        e.preventDefault(); // previene el salto brusco
+        const target = document.querySelector(this.getAttribute('href')); // obtiene el elemento objetivo
         if (target) {
-            const headerOffset = 80;
+            const headerOffset = 80; // ajusta este valor segun la altura del header fijo
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -34,7 +36,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Header shadow on scroll
+// agrega sombra al header al hacer scroll)
 window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
     if (!header) return;
@@ -43,4 +45,37 @@ window.addEventListener('scroll', () => {
     } else {
         header.classList.remove('shadow-xl');
     }
+});
+
+// Service Card Flip Functionality
+
+
+
+
+
+// Carousel Functionality 
+document.addEventListener('DOMContentLoaded', function () {
+
+    const wrapper = document.getElementById('carousel-wrapper');
+    const next = document.getElementById('next');
+    const prev = document.getElementById('prev');
+
+    if (!wrapper || !next || !prev) return;
+
+    const scrollAmount = 344; // 320px card + gap
+
+    next.addEventListener('click', function () {
+        wrapper.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    });
+
+    prev.addEventListener('click', function () {
+        wrapper.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+        });
+    });
+
 });

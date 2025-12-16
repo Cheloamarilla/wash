@@ -12,7 +12,7 @@ templates = Jinja2Templates(directory="templates")
 # 👇 Servimos CSS, JS, imágenes, etc.
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-CSV_URL = "https://docs.google.com/spreadsheets/d/1wCeeO7EnrESFsCdEFN-5oTPyHCXAEjypiaIDYgTnXl4/export?format=csv&gid=0"
+CSV_URL = "https://docs.google.com/spreadsheets/d/1wCeeO7EnrESFsCdEFN-5oTPyHCXAEjypiaIDYgTnXl4/export?format=csv"
 
 
 def fix_encoding(text):
