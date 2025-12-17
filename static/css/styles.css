@@ -19,11 +19,13 @@ html {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
+    opacity: 0;
 }
 
 .mobile-menu.active {
     max-height: 500px;
     overflow-y: auto;
+    opacity: 1;
 }
 
 .service-card {
