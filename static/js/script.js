@@ -1,4 +1,4 @@
-// Mobile Menu Toggle
+// Mobile Menu Toggle (no burger on mobile now, but keep guard for safety)
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileMenu.classList.toggle('hidden', !isActive);
         });
 
-        // cuando se toca un link se cierra el menu movil
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -19,9 +18,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 mobileMenu.classList.add('hidden');
             });
         });
-    } else {
-        console.error('Mobile menu elements not found');
     }
+});
+
+// Hide header on scroll down, show on scroll up
+document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('header');
+    if (!header) return;
+    let lastY = window.scrollY;
+    window.addEventListener('scroll', () => {
+        const currentY = window.scrollY;
+        const goingDown = currentY > lastY + 5;
+        const goingUp = currentY < lastY - 5;
+        if (goingDown && currentY > 80) {
+            header.classList.add('hide-header');
+        } else if (goingUp || currentY <= 80) {
+            header.classList.remove('hide-header');
+        }
+        lastY = currentY;
+    });
 });
 
 // Scroll suave al tocar links con # anclas)

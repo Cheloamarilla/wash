@@ -15,6 +15,14 @@ html {
     opacity: 0.95;
 }
 
+header {
+    transition: transform 0.3s ease;
+}
+
+.hide-header {
+    transform: translateY(-110%);
+}
+
 .mobile-menu {
     max-height: 0;
     overflow: hidden;
