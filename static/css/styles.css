@@ -8,7 +8,7 @@ html {
 
 .hero-bg {
     background-image: linear-gradient(rgba(0, 96, 246, 0.6), rgba(0, 0, 0, 0.5)), 
-                      url('../img/img_hero.png');  /* cambiar imaegen del hero */
+                      url('/static/img/img_hero.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
