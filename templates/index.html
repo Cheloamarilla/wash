@@ -78,11 +78,9 @@
     <section id="inicio" class="bg-white pt-16 md:pt-24 bg-gray-50">
         <div class=" bg-gray-50 max-w-7xl mx-auto px-4">           
         <!-- HERO CARD -->
-            <div class="bg-gray-50 relative h-[30vh] rounded-3xl overflow-hidden shadow-lg"> <!-- contenedor relativo para posicionar elementos absolutos dentro -->            
+            <div class="bg-gray-50 relative h-[30vh] rounded-3xl overflow-hidden shadow-lg">
                 <!-- Fondo imagen -->
-                <div class="absolute inset-0 hero-bg"></div> <!-- inset-0 hace que ocupe todo el contenedor padre y hero hace que  -->            
-                <!-- Overlay oscuro -->
-                <div class="absolute inset-0 bg-black/35"></div> <!-- overlay hace que ponga una capa oscura encima de la imagen de fondo -->
+                <div class="absolute inset-0" style="background-image: linear-gradient(rgba(0, 96, 246, 0.7), rgba(0, 0, 0, 0.6)), url('{{ url_for('static', path='img/imagen_fondo.png') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
                 <!-- Contenido -->
                 <div class="relative z-10 h-full flex flex-col justify-center text-center text-white px-6"> <!-- z-10 para que este encima de la imagen y el overlay -->
                     <h1 class="text-3xl font-bold mb-3">
