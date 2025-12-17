@@ -1,22 +1,29 @@
 
 
 // Mobile Menu Toggle
-const mobileMenuBtn = document.getElementById('mobile-menu-btn'); // Boton para abrir/cerrar el menu movil
-const mobileMenu = document.getElementById('mobile-menu');
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active'); // activa y desactiva 
-    });
-
-    // cuando se toca un link se cierra el menu movil
-    const mobileLinks = mobileMenu.querySelectorAll('a'); // selecciona todos los links dentro del menu movil
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => { // agrega un evento de click a cada link
-            mobileMenu.classList.remove('active'); // cierra el menu movil
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            mobileMenu.classList.toggle('active');
+            console.log('Menu toggled, active:', mobileMenu.classList.contains('active'));
         });
-    });
-}
+
+        // cuando se toca un link se cierra el menu movil
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+    } else {
+        console.error('Mobile menu elements not found');
+    }
+});
 
 // Scroll suave al tocar links con # anclas)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
