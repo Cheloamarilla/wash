@@ -26,7 +26,7 @@ html {
 }
 
 .service-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: none;
     position: relative;
     height: 100%;
     display: flex;
@@ -34,8 +34,8 @@ html {
 }
 
 .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 102, 246, 0.2);
+    transform: none;
+    box-shadow: none;
 }
 
 .service-card-content {
@@ -80,11 +80,11 @@ html {
 }
 
 .feature-card {
-    transition: all 0.3s ease; 
+    transition: box-shadow 0.3s ease; 
 }
 
 .feature-card:hover { 
-    transform: scale(1.05); 
+    transform: none;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
