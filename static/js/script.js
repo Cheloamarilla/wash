@@ -1,6 +1,3 @@
-
-
-document.addEventListener('DOMContentLoaded', function() {
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -10,8 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileMenuBtn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            const isActive = mobileMenu.classList.toggle('active');
-            mobileMenu.classList.toggle('hidden', !isActive);
+            mobileMenu.classList.toggle('active');
         });
 
         // cuando se toca un link se cierra el menu movil
@@ -19,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
-                mobileMenu.classList.add('hidden');
             });
         });
     } else {
