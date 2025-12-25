@@ -6,8 +6,7 @@
     <title>WASH MOTORS - Tu Comodidad Nuestra Prioridad</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ url_for('static', path='img/Iso_Wash_Motors.png') }}" sizes="32x32">
-    <link rel="shortcut icon" href="{{ url_for('static', path='img/Iso_Wash_Motors.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ url_for('static', path='img/Iso_Wash Motors.png') }}">
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -632,14 +631,14 @@
 
         updateCarousel();
 
-        // Auto-rotate every 1.5 second
+        // Auto-rotate every 1 second
         if (totalSlides > 1) {
             setInterval(() => {
                 currentSlide = (currentSlide + 1) % totalSlides;
                 updateCarousel();
             }, 1500);
         }
-
+        
     </script>
 
     <script>
