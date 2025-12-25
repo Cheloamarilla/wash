@@ -138,17 +138,14 @@
                 </button>
 
                 <div class="overflow-hidden">
-                    <div class="flex gap-6 pb-4 px-4 transition-transform duration-300" id="standard-track"> <!-- min-w removed: now slider-controlled -->
+                    <div class="flex gap-6 pb-4 px-2 transition-transform duration-300" id="standard-track"> <!-- min-w removed: now slider-controlled -->
                     {% for item in grouped_items.get('Estandar', []) %}
                     {% set item_price = item.get('Precio', '0')|replace('.', '')|replace(',', '')|float %}
                     {% set is_max = item_price == max_price %} <!--  Verifica si el precio del ítem es igual al precio máximo -->
                     
                     {% if is_max %} <!--  Condicional para identificar el servicio más caro  -->
                     <!-- Tarjeta Premium/Dorada (Más cara) -->
-                    <div class="service-card flex-shrink-0 w-80 h-auto min-h-[30rem] bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl p-8 relative overflow-visible cursor-pointer" style="perspective: 1000px;">
-                        <div class="absolute -top-0 -right-0 bg-white text-orange-500 px-4 py-2 rounded-bl-2xl rounded-tr-3xl font-bold text-sm z-30">
-                            MÁS POPULAR
-                        </div>
+                    <div class="service-card flex-shrink-0 w-80 h-auto min-h-[30rem] bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl p-6 sm:p-8 relative overflow-visible cursor-pointer" style="perspective: 1000px;">
                         <div class="service-card-inner w-full h-full relative transition-transform duration-500" style="transform-style: preserve-3d;">
                             
                             <!-- Front of card -->
@@ -160,8 +157,8 @@
                                     </svg> 
                                 </div> 
                                 <div class="card-info flex-grow"> <!--  flex-grow hace que este div ocupe todo el espacio disponible -->
-                                    <h4 class="text-xl font-bold mb-2">{{ item.get('Nombre de lavado', 'Servicio') }}</h4>
-                                    <p class="text-sm leading-relaxed mb-3">
+                                    <h4 class="text-xl font-bold mb-2 whitespace-nowrap">{{ item.get('Nombre de lavado', 'Servicio') }}</h4>
+                                    <p class="text-sm leading-relaxed mb-3" style="text-align: justify;">
                                         {{ item.get('Descripcion', '') }}
                                     </p>
                                     <div class="border-t border-white/30 pt-2"> <!--  border-white/30 aplica un borde blanco con 30% de opacidad  -->
@@ -187,7 +184,7 @@
                             </div>
 
                             <!-- Back of card -->
-                            <div class="service-card-back w-full h-full absolute inset-0 p-8 flex flex-col bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl" style="backface-visibility: hidden; transform: rotateY(180deg);">
+                            <div class="service-card-back w-full h-full absolute inset-0 p-6 sm:p-8 flex flex-col bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl" style="backface-visibility: hidden; transform: rotateY(180deg);">
                                 <h4 class="text-lg font-bold mb-3">Detalle de lavado</h4>  
                                 <div class="detail-container flex-grow flex flex-col">
                                     <div class="detail-list text-white/90 text-xs leading-tight space-y-1 mb-3">
@@ -303,17 +300,14 @@
                 </button>
 
                 <div class="overflow-hidden">
-                    <div class="flex gap-6 pb-4 px-4 transition-transform duration-300" id="premium-track">
+                    <div class="flex gap-6 pb-4 px-2 transition-transform duration-300" id="premium-track">
                 {% for item in grouped_items.get('Premium', []) %}
                 {% set item_price = item.get('Precio', '0')|replace('.', '')|replace(',', '')|float %}
                 {% set is_max = item_price == max_price %}
 
                 {% if is_max %}
                 <!-- Tarjeta Premium/Dorada (Más cara) -->
-                <div class="service-card flex-shrink-0 w-[88vw] sm:w-80 h-auto min-h-[30rem] sm:min-h-[30rem] bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl p-6 sm:p-8 relative overflow-visible cursor-pointer" style="perspective: 1000px;">
-                    <div class="absolute -top-0 -right-0 bg-white text-orange-500 px-4 py-2 rounded-bl-2xl rounded-tr-3xl font-bold text-sm z-30">
-                        MÁS POPULAR
-                    </div>
+                <div class="service-card flex-shrink-0 w-[88vw] sm:w-80 h-auto min-h-[30rem] sm:min-h-[30rem] bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl p-5 sm:p-7 relative overflow-visible cursor-pointer" style="perspective: 1000px;">
                     <div class="service-card-inner w-full h-full relative transition-transform duration-500" style="transform-style: preserve-3d;">
 
                         <!-- Front of card -->
@@ -325,8 +319,8 @@
                                 </svg>
                             </div>
                             <div class="card-info flex-grow">
-                                <h4 class="text-xl font-bold mb-2">{{ item.get('Nombre de lavado', 'Servicio') }}</h4>
-                                <p class="text-sm leading-relaxed mb-3">
+                                <h4 class="text-xl font-bold mb-2 whitespace-nowrap">{{ item.get('Nombre de lavado', 'Servicio') }}</h4>
+                                <p class="text-sm leading-relaxed mb-3" style="text-align: justify;">
                                     {{ item.get('Descripcion', '') }}
                                 </p>
                                 <div class="border-t border-white/30 pt-2">
@@ -352,7 +346,7 @@
                         </div>
 
                         <!-- Back of card -->
-                        <div class="service-card-back w-full h-full absolute inset-0 p-8 flex flex-col bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl" style="backface-visibility: hidden; transform: rotateY(180deg);">
+                        <div class="service-card-back w-full h-full absolute inset-0 p-6 sm:p-8 flex flex-col bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl" style="backface-visibility: hidden; transform: rotateY(180deg);">
                             <h4 class="text-lg font-bold mb-3">Detalle de lavado</h4>
                             <div class="detail-container flex-grow flex flex-col">
                                 <div class="detail-list text-white/90 text-xs leading-tight space-y-1 mb-3">
