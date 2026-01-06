@@ -44,7 +44,7 @@
                 </div>
 
                 <!-- Desktop Navigation -->
-                <nav class="hidden md:flex space-x-8 items-center">
+                <nav class="hidden md:flex space-x-12 items-center"> <!-- es hidden en pantallas pequeñas y flex en medianas y grandes -->
                     <a href="#inicio" class="text-blue-500 hover:text-blue-900 transition ">INICIO</a>
                     <a href="#servicios" class="text-blue-500 hover:text-blue-900 transition">SERVICIOS</a>
                     <a href="#experiencia-corporativa" class="text-blue-500 hover:text-blue-900 transition">EXPERIENCIA CORPORATIVA</a>
@@ -58,25 +58,50 @@
                         WhatsApp
                     </a>
                 </div>
+
+                <!-- Mobile hamburger -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" aria-label="Abrir menú" class="p-2 rounded-lg text-blue-600 bg-white/10 hover:bg-white/20">    <!-- botón para abrir el menú móvil  -->
+                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /> <!-- ícono de hamburguesa  -->
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
-    <section id="inicio" class="bg-white pt-16 md:pt-24 bg-gray-50">
-        <div class=" bg-gray-50 max-w-7xl mx-auto px-4">           
+<!-- Mobile Menu, hidden by default, shown when hamburger is clicked -->
+    <div id="mobile-menu" class="mobile-menu hidden md:hidden fixed inset-x-0 top-16 bg-blue-600 z-50 shadow-lg">
+        <div class="px-6 py-6">
+            <nav class="flex flex-col gap-4">
+                <a href="#inicio" class="text-white">Inicio</a>
+                <a href="#servicios" class="text-white">Servicios</a>
+                <a href="#experiencia-corporativa" class="text-white">Corporativo</a>
+                <a href="#que-hacemos" class="text-white">Qué hacemos</a>
+                <a href="#contacto" class="text-white">Contacto</a>
+                <a href="https://wa.me/595972614469" target="_blank" class="mt-2 inline-block bg-white text-gray-800 px-4 py-2 rounded-full text-center">WhatsApp</a>
+            </nav>
+        </div>
+    </div>
+
+    <section id="inicio" class="bg-white pt-16 md:pt-16 bg-gray-50">
+                 
         <!-- HERO CARD -->
-            <div class="bg-gray-50 relative h-[30vh] rounded-3xl overflow-hidden shadow-lg">
+            <div class="relative h-[30vh] md:h-[50vh] overflow-hidden shadow-xl"> <!-- contenedor principal del hero  -->
                 <!-- Fondo imagen -->
-                <div class="absolute inset-0" style="background-image: linear-gradient(rgba(0, 96, 246, 0.7), rgba(0, 0, 0, 0.6)), url('{{ url_for('static', path='img/imagen_fondo.png') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ url_for('static', path='img/imagen_fondo.png') }}');">
+            </div>
+                <div class="absolute inset-0 bg-blue-900/70"></div>
                 <!-- Contenido -->
                 <div class="relative z-10 h-full flex flex-col justify-center text-center text-white px-6"> <!-- z-10 para que este encima de la imagen y el overlay -->
-                    <h1 class="text-3xl font-bold mb-3">
+                    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4"> <!-- Título principal  -->
                     TU COMODIDAD<br>
                     <span class="text-3xl"> NUESTRA PRIORIDAD</span> 
                     </h1>
-                    <p class="text-sm mb-6">
-                    llevamos el lavadero hasta vos
-                    </p>
+                        <p class="text-base md:text-lg mb-8 opacity-90">
+                        Llevamos el lavadero hasta vos
+                        </p>
                     <div class="flex gap-3 justify-center">
                         <a href="#servicios"
                             class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-gray-200 hover:text-blue-600 transition">
@@ -88,46 +113,41 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
 
     <!-- About Section -->
-    <section id="nosotros" class="py-4"> <!-- padding es el espacio relleno entre el otro elemento y este -->
-        <div class="container mx-auto px-4">
-            <div class="text-center md:flex-row items-center gap-12"> 
-                <!-- Text Content (Left) -->
+    <section class="py-4">
+        <img src="{{ url_for('static', path='img/icono_auto.png') }}" alt="Ícono de auto" class="mx-auto -mb-6 h-16"> <!--  Ícono centrado  -->
+            <div class="text-center mb-12"> 
+                <h2 class="inline-block text-blue-600 font-bold text-3xl mb-1 my-4 bg-white px-6 py-3 rounded-full border-2 border-blue-600">NUESTROS SERVICIOS</h2>
+              <!--   Título, subtítulo y párrafo del About Section 
                 <div class=" flex justify-center mx-auto">
-            <!--    <h2 class="text-blue-600 justify-center font-bold text-lg mb-3">QUÉ HACEMOS</h2> EN EL FOOTER PONERLO ----------------------------------------  
-                    <h3 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-                        ¿Qué Hacemos?
-                    </h3>  -->
-                    <p class=" text-gray-600 text-lg mb-4 leading-relaxed">  <!--  leading-relaxed → define el interlineado -->
+                    <p class=" text-gray-600 text-lg mb-4 leading-relaxed">   leading-relaxed → define el interlineado  
                         En <span class="font-bold text-blue-600">WASH MOTORS</span> simplificamos tu rutina, limpiamos y cuidamos tu vehículo sin que tengas que moverte.
                     </p>
-                </div>
-
+                </div> -->
             </div>
         </div>
     </section>
 
     <!-- Services Section - Standard -->
-    <section id="servicios" class="pt-14 pb-16 bg-blue-600 text-white"> 
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12"> 
-                <h2 class="inline-block text-blue-600 font-bold text-2xl mb-1 my-4 bg-white px-4 py-2 rounded-full gap-3 -mt-1">NUESTROS SERVICIOS</h2>
-                <h3 class="text-2xl font-semibold md:text-xl text-black mb-3">
-                    Lavados Estándar
+    <section id="servicios" class="pt-14 pb-16 bg-blue-600 text-white rounded-t-[60px]">   <!-- sección de servicios con fondo azul y bordes redondeados  -->
+        <div class="container mx-auto px-4">  <!-- contenedor centrado  -->
+            <div class="text-center mb-12">   <!-- título y descripción centrados  -->
+                <h2 class="inline-block text-white font-bold text-4xl -mb-1 my-4 px-2 py-2 rounded-full gap-3 -mt-1">EXPERIENCIA ESTANDAR</h2>
+                <h3 class="text-lg text-white/90 max-w-3xl mx-auto mb-6">
+                    Cuidado diario para tu vehículo
                 </h3>
-                <p class="text-lg text-white/90 max-w-3xl mx-auto">
+            <!--    <p class="text-lg text-white/90 max-w-3xl mx-auto">
                     La opción práctica para mantener tu vehículo limpio, cuidado y listo para el día a día.
                 </p>
             </div>
-
+            -->
             <div class="relative" id="standard-slider">
                 <button id="standard-prev" class="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path> <!-- ícono de flecha izquierda  -->
                     </svg>
                 </button>
 
@@ -137,104 +157,100 @@
                     </svg>
                 </button>
 
-                <div class="overflow-hidden">
+                <div class="overflow-hidden"> <!-- overflow-hidden oculta el contenido que se desborda del contenedor -->
                     <div class="flex gap-6 pb-4 px-2 transition-transform duration-300" id="standard-track"> <!-- min-w removed: now slider-controlled -->
                     {% for item in grouped_items.get('Estandar', []) %}
-                    {% set item_price = item.get('Precio', '0')|replace('.', '')|replace(',', '')|float %}
+                    {% set item_price = item.get('Precio', '0')|replace('.', '')|replace(',', '')|float %} <!-- convierte el precio a float para comparación  -->
                     {% set is_max = item_price == max_price %} <!--  Verifica si el precio del ítem es igual al precio máximo -->
                     
                     {% if is_max %} <!--  Condicional para identificar el servicio más caro  -->
                     <!-- Tarjeta Premium/Dorada (Más cara) -->
-                    <div class="service-card flex-shrink-0 w-80 h-auto min-h-[30rem] bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl p-6 sm:p-8 relative overflow-visible cursor-pointer" style="perspective: 1000px;">
+                    <div class="service-card flex-shrink-0 w-80 h-auto min-h-[18rem] bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl p-4 relative overflow-visible cursor-pointer" style="perspective: 1000px;">
                         <div class="service-card-inner w-full h-full relative transition-transform duration-500" style="transform-style: preserve-3d;">
-                            
-                            <!-- Front of card -->
-                            <div class="service-card-front w-full h-full absolute inset-0 p-6 flex flex-col" style="backface-visibility: hidden;"> <!--  backface-visibility: hidden; hace que el reverso de la tarjeta no sea visible cuando se gira -->
-                                
-                                <div class="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-2xl flex items-center justify-center mb-4"> <!--  backdrop-blur-sm aplica un efecto de desenfoque al fondo -->
-                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-                                    </svg> 
-                                </div> 
-                                <div class="card-info flex-grow"> <!--  flex-grow hace que este div ocupe todo el espacio disponible -->
-                                    <h4 class="text-xl font-bold mb-2 whitespace-nowrap">{{ item.get('Nombre de lavado', 'Servicio') }}</h4>
-                                    <p class="text-sm leading-relaxed mb-3" style="text-align: justify;">
-                                        {{ item.get('Descripcion', '') }}
-                                    </p>
-                                    <div class="border-t border-white/30 pt-2"> <!--  border-white/30 aplica un borde blanco con 30% de opacidad  -->
-                                        <div class="flex justify-between items-center mb-1">
-                                            <span class="text-white/90 text-xs">Precio:</span>   <!--  Precio del servicio  -->
-                                            <span class="text-xl font-bold">{{ item.get('Precio', 'N/A') }} Gs</span> <!--  Precio del servicio  -->
-                                        </div>
-                                        <div class="flex justify-between items-center"> <!--  Alinea el contenido horizontalmente con espacio entre ellos  -->
-                                            <span class="text-white/90 text-xs">Duración:</span> <!--  Duración del servicio  -->
-                                            <span class="text-white/90 text-xs">{{ item.get('Demora', 'N/A') }}</span> <!--  Duración del servicio  -->
-                                        </div>
+
+                            <!-- Front of card (compact premium) -->
+                            <div class="service-card-front w-full h-full absolute inset-0 p-4 flex flex-col" style="backface-visibility: hidden;">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <div class="bg-white/20 backdrop-blur-sm w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                        </svg>
+                                    </div>
+                                    <h4 class="text-lg font-bold mb-0 whitespace-nowrap uppercase">{{ item.get('Nombre de lavado', 'Servicio') }}</h4>
+                                </div>
+                                <p class="text-sm leading-snug mb-2" style="text-align: justify;">{{ item.get('Descripcion', '') }}</p>
+                                <div class="border-t border-white/30 pt-2 pb-1 mb-2">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-white/90 text-xs">Precio:</span>
+                                        <span class="text-lg font-bold">{{ item.get('Precio', 'N/A') }} Gs</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-white/90 text-xs">Duración:</span>
+                                        <span class="text-white/90 text-xs">{{ item.get('Demora', 'N/A') }}</span>
                                     </div>
                                 </div>
-                                
-                                <div class="flex gap-2 mt-4">
+
+                                <div class="flex gap-2 mt-2">
                                     <a href="https://wa.me/5491234567890?text=Hola!%20Me%20interesaría%20agendar%20el%20{{ item.get('Nombre de lavado', 'Servicio')|urlencode }}.%20¿Cuándo%20tendrían%20disponibilidad?" target="_blank" class="flex-1 block w-full bg-white text-orange-500 text-center py-2 rounded-full font-bold hover:bg-gray-100 transition shadow-lg text-sm">
                                         Agendar 
-                                    </a> <!--  card-button es para el boton de agendar  -->
+                                    </a>
                                     <button class="flip-btn flex-1 bg-white text-orange-500 text-center py-2 rounded-full font-bold hover:bg-gray-100 transition shadow-lg text-sm">
                                         Ver más
-                                    </button> <!--  flip-btn es para el boton de girar la tarjeta  -->
+                                    </button>
                                 </div>
                             </div>
 
-                            <!-- Back of card -->
-                            <div class="service-card-back w-full h-full absolute inset-0 p-6 sm:p-8 flex flex-col bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl" style="backface-visibility: hidden; transform: rotateY(180deg);">
-                                <h4 class="text-lg font-bold mb-3">Detalle de lavado</h4>  
-                                <div class="detail-container flex-grow flex flex-col">
-                                    <div class="detail-list text-white/90 text-xs leading-tight space-y-1 mb-3">
-                                        {% for linea in item.get('Detalle de lavado', '').split('\n') %}
-                                            {% if linea.strip() %}
-                                                <div class="flex items-start">
-                                                    <span class="mr-2 flex-shrink-0">✓</span>
-                                                    <span>{{ linea.strip() }}</span>
-                                                </div>
-                                            {% endif %}
-                                        {% endfor %}
+                            <!-- Back of card (compact premium) -->
+                            <div class="service-card-back w-full h-full absolute inset-0 p-4 flex flex-col justify-between bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl" style="backface-visibility: hidden; transform: rotateY(180deg);">
+                                <div>
+                                    <h4 class="text-lg font-bold mb-6 text-center">Detalle de lavado</h4>
+                                    <div class="detail-container flex-grow flex flex-col">
+                                        <blockquote class="detail-list text-white/90 text-xs leading-tight space-y-2 mb-2 pl-3 border-l-2 border-white/30 italic">
+                                            {% for linea in item.get('Detalle de lavado', '').split('\n') %}
+                                                {% if linea.strip() %}
+                                                    <div class="flex items-start">
+                                                        <span class="text-white mr-3 flex-shrink-0">✓</span>
+                                                        <span>{{ linea.strip()|lower|capitalize }}</span>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </blockquote>
                                     </div>
                                 </div>
                                 <button class="flip-btn w-full bg-white text-orange-500 text-center py-2 rounded-full font-bold hover:bg-gray-100 transition shadow-lg text-sm">
                                     Volver
-                                </button>
+                                </button> <!-- flip-btn es para el boton de girar la tarjeta  -->
                             </div>
                         </div>
                     </div>
 
                     {% else %}
                     <!-- Tarjeta Estándar -->
-                    <div class="service-card flex-shrink-0 w-80 h-auto min-h-[30rem] bg-white text-blue-700 border-2 border-blue-200 rounded-3xl relative overflow-hidden cursor-pointer" style="perspective: 1000px;">
-                        <div class="service-card-inner w-full h-full relative transition-transform duration-500" style="transform-style: preserve-3d;">
-                            
-                            <!-- Front of card -->
-                            <div class="service-card-front w-full h-full absolute inset-0 p-8 flex flex-col" style="backface-visibility: hidden;">
-                                <div class="bg-blue-50 w-16 h-16 rounded-2xl flex items-center justify-center mb-4">
-                                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
+                    <div class="service-card flex-shrink-0 w-80 h-auto min-h-[18rem] bg-white text-blue-700 border-2 border-blue-200 rounded-3xl relative overflow-hidden cursor-pointer" style="perspective: 1000px;">
+                        <div class="service-card-inner w-full h-full relative transition-transform duration-500" style="transform-style: preserve-3d;"> 
+                            <!-- Front of card (compact) -->
+                            <div class="service-card-front w-full h-full absolute inset-0 p-4 flex flex-col" style="backface-visibility: hidden;">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <div class="bg-blue-50 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <h4 class="text-lg font-bold text-blue-700 m-0 uppercase">{{ item.get('Nombre de lavado', 'Servicio') }}</h4>
                                 </div>
-                                <div class="card-info flex-grow">
-                                    <h4 class="text-xl font-bold text-blue-700 mb-2">{{ item.get('Nombre de lavado', 'Servicio') }}</h4>
-                                    <p class="text-sm leading-relaxed mb-3 text-blue-800">
-                                        {{ item.get('Descripcion', '') }}
-                                    </p>
-                                    <div class="border-t border-gray-200 pt-2">
-                                        <div class="flex justify-between items-center mb-1">
-                                            <span class="text-blue-700 text-xs">Precio:</span>
-                                            <span class="text-xl font-bold text-blue-700">{{ item.get('Precio', 'N/A') }} Gs</span>
-                                        </div>
-                                        <div class="flex justify-between items-center">
-                                            <span class="text-blue-500 text-xs">Duración:</span>
-                                            <span class="text-blue-500 text-xs">{{ item.get('Demora', 'N/A') }}</span>
-                                        </div>
+                                <p class="text-sm leading-snug mb-2 text-blue-800">{{ item.get('Descripcion', '') }}</p>
+                                <div class="border-t border-gray-200 pt-2 pb-1 mb-2">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-blue-700 text-xs">Precio:</span>
+                                        <span class="text-lg font-bold text-blue-700">{{ item.get('Precio', 'N/A') }} Gs</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-blue-500 text-xs">Duración:</span>
+                                        <span class="text-blue-500 text-xs">{{ item.get('Demora', 'N/A') }}</span>
                                     </div>
                                 </div>
 
-                                <div class="flex gap-2 mt-4">
+                                <div class="flex gap-2 mt-2">
                                     <a href="https://wa.me/5491234567890?text=Hola!%20Me%20interesaría%20agendar%20el%20{{ item.get('Nombre de lavado', 'Servicio')|urlencode }}.%20¿Cuándo%20tendrían%20disponibilidad?" target="_blank" class="flex-1 block w-full bg-blue-600 text-white text-center py-2 rounded-full font-bold hover:bg-blue-700 transition text-sm">
                                         Agendar
                                     </a>
@@ -244,24 +260,26 @@
                                 </div>
                             </div>
 
-                            <!-- Back of card -->
-                            <div class="service-card-back w-full h-full absolute inset-0 p-8 flex flex-col bg-blue-50 text-blue-800 rounded-3xl" style="backface-visibility: hidden; transform: rotateY(180deg);">
-                                <h4 class="text-lg font-bold mb-3 text-blue-800">Detalle de lavado</h4>
-                                <div class="detail-container flex-grow flex flex-col">
-                                    <div class="detail-list text-blue-700 text-sm leading-relaxed space-y-1 mb-3">
-                                        {% for linea in item.get('Detalle de lavado', '').split('\n') %}
-                                            {% if linea.strip() %}
-                                                <div class="flex items-start">
-                                                    <span class="mr-2 flex-shrink-0">✓</span>
-                                                    <span>{{ linea.strip() }}</span>
-                                                </div>
-                                            {% endif %}
-                                        {% endfor %}
+                            <!-- Back of card (compact, light) -->
+                            <div class="service-card-back w-full h-full absolute inset-0 p-4 flex flex-col justify-between bg-blue-50 text-blue-800 rounded-3xl" style="backface-visibility: hidden; transform: rotateY(180deg);">
+                                <div>
+                                    <h4 class="text-lg font-bold mb-6 text-center text-blue-800">Detalle de lavado</h4>
+                                    <div class="detail-container flex flex-col">
+                                        <blockquote class="detail-list text-blue-700 text-sm leading-tight space-y-2 mb-2 pl-3 border-l-2 border-blue-200 italic">
+                                            {% for linea in item.get('Detalle de lavado', '').split('\n') %}
+                                                {% if linea.strip() %}
+                                                    <div class="flex items-start">
+                                                        <span class="text-blue-600 mr-3 flex-shrink-0">✓</span>
+                                                        <span>{{ linea.strip()|lower|capitalize }}</span>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </blockquote>
                                     </div>
                                 </div>
                                 <button class="flip-btn w-full bg-blue-600 text-white text-center py-2 rounded-full font-bold hover:bg-blue-700 transition text-sm">
                                     Volver
-                                </button> <!--  flip-btn es para el boton de girar la tarjeta  -->
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -273,70 +291,77 @@
         </div>
     </section>
 
-    <!-- Services Section - Premium (igual a estándar) -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="inline-block text-white font-bold text-2xl mb-1 my-4 bg-blue-600 px-4 py-2 rounded-full gap-3 -mt-1">EXPERIENCIA PREMIUM</h2>
-                <h3 class="text-2xl font-semibold md:text-xl text-gray-800 mb-3">
+    
+    <!-- Separador ovalado entre Standard y Premium EFECTO BORDE REDONDEADO -->
+    <div class="relative -mt-8 mb-6"> 
+        <div class="w-screen h-12 md:h-16 bg-white rounded-t-[60px]"></div>
+    </div> <!-- cierre del EFECTO BORDE REDONDEADO  -->
+
+
+     <!-- Services Section - Premium (igual a estándar) -->
+         <section class="py-12 bg-white rounded-t-[60px]">  <!-- sección de servicios con fondo blanco y bordes redondeados, el py-12 es para separar del borde redondeado de arriba en donde esta el separador -->
+        <div class="container mx-auto px-4"> <!-- contenedor centrado  -->
+            <div class="text-center -mt-12 mb-6"> <!-- título y descripción centrados, más cerca del contenedor superior -->
+                <h2 class="inline-block text-blue-600 font-bold text-4xl my-3 px-2 py-2 rounded-full gap-3">EXPERIENCIA PREMIUM</h2> <!-- título y descripción centrados  -->
+         <!--       <h3 class="text-2xl font-semibold md:text-xl text-gray-800 mb-3"> 
                     Lavados Full Wash
-                </h3>
-                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-                    Para quienes buscan el máximo nivel de cuidado y detalle en su vehículo.
+                </h3> -->
+                <p class="text-lg text-black/90 max-w-3xl mx-auto mb-2 -mt-3 leading-tight">
+                    Cuidado superior y máximo detalle
                 </p>
             </div>
-
-            <div class="relative max-w-7xl mx-auto" id="premium-slider">
-                <button id="premium-prev" class="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+ 
+            <div class="relative" id="premium-slider"> <!-- contenedor del slider  -->
+                <!-- Flechas visibles y con estilo similar a la imagen deseada -->
+                <button id="premium-prev" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-white/90 p-2 rounded-full hover:bg-white shadow-md"> <!-- botón de flecha izquierda  -->
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <!-- ícono de flecha izquierda  -->
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path> <!-- ruta del ícono  -->
                     </svg>
                 </button>
 
-                <button id="premium-next" class="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button id="premium-next" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-white/90 p-2 rounded-full hover:bg-white shadow-md"> <!-- botón de flecha derecha  -->
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <!-- ícono de flecha derecha  -->
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                     </svg>
                 </button>
 
-                <div class="overflow-hidden">
-                    <div class="flex gap-6 pb-4 px-2 transition-transform duration-300" id="premium-track">
-                {% for item in grouped_items.get('Premium', []) %}
-                {% set item_price = item.get('Precio', '0')|replace('.', '')|replace(',', '')|float %}
-                {% set is_max = item_price == max_price %}
+                <div class="overflow-hidden"> <!-- overflow-hidden oculta el contenido que se desborda del contenedor -->
+                    <div class="flex gap-6 pb-6 px-2 items-stretch transition-transform duration-300" id="premium-track"> <!--  contenedor de las tarjetas  -->
+                {% for item in grouped_items.get('Premium', []) %} <!--  bucle para cada ítem en la categoría Premium  -->
+                {% set item_price = item.get('Precio', '0')|replace('.', '')|replace(',', '')|float %}<!-- convierte el precio a float para comparación  -->
+                {% set is_max = item_price == max_price %} <!--  Verifica si el precio del ítem es igual al precio máximo -->
 
                 {% if is_max %}
-                <!-- Tarjeta Premium/Dorada (Más cara) -->
-                <div class="service-card flex-shrink-0 w-[88vw] sm:w-80 h-auto min-h-[30rem] sm:min-h-[30rem] bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl p-5 sm:p-7 relative overflow-visible cursor-pointer" style="perspective: 1000px;">
+                <!-- Tarjeta Premium/Dorada (Más cara) --> <!--  mismo diseño que estándar pero con colores dorados  -->
+                <div class="service-card flex-shrink-0 w-[86vw] sm:w-80 h-auto min-h-[22rem] sm:min-h-[26rem] bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl p-4 sm:p-6 relative overflow-visible cursor-pointer" style="perspective: 1000px;">  <!-- contenedor de la tarjeta  -->
                     <div class="service-card-inner w-full h-full relative transition-transform duration-500" style="transform-style: preserve-3d;">
 
                         <!-- Front of card -->
-                        <div class="service-card-front w-full h-full absolute inset-0 p-6 flex flex-col" style="backface-visibility: hidden;">
-
-                            <div class="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-2xl flex items-center justify-center mb-4">
-                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-                                </svg>
+                        <div class="service-card-front w-full h-full absolute inset-0 p-4 flex flex-col" style="backface-visibility: hidden;"> <!-- frente de la tarjeta  -->
+                            <!-- header: icon left + title right -->
+                            <div class="flex items-start gap-4 mb-2"> <!--  contenedor del encabezado  -->
+                                <div class="bg-white/20 backdrop-blur-sm w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"> <!--  ícono con fondo blanco translúcido  -->
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <!-- ícono de estrella  -->
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                    </svg>
+                                </div>
+                                <h4 class=" text-xl font-bold mb-4 leading-tight uppercase flex-1">{{ item.get('Nombre de lavado', 'Servicio') }}</h4> <!--  título del servicio  -->
                             </div>
-                            <div class="card-info flex-grow">
-                                <h4 class="text-xl font-bold mb-2 whitespace-nowrap">{{ item.get('Nombre de lavado', 'Servicio') }}</h4>
-                                <p class="text-sm leading-relaxed mb-3" style="text-align: justify;">
-                                    {{ item.get('Descripcion', '') }}
-                                </p>
-                                <div class="border-t border-white/30 pt-2">
-                                    <div class="flex justify-between items-center mb-1">
-                                        <span class="text-white/90 text-xs">Precio:</span>
-                                        <span class="text-xl font-bold">{{ item.get('Precio', 'N/A') }} Gs</span>
-                                    </div>
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-white/90 text-xs">Duración:</span>
-                                        <span class="text-white/90 text-xs">{{ item.get('Demora', 'N/A') }}</span>
-                                    </div>
+
+                            <p class="text-sm leading-snug mb-3 text-white/90" style="text-align: justify;"> <!--  descripción del servicio  -->
+                                {{ item.get('Descripcion', '') }} <!--  descripción del servicio  -->
+                            </p>
+
+                            <div class="border-t border-white/25 pt-3 mb-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"> <!--  contenedor de duración y precio  -->
+                                <div class="text-xs text-white/90">Duración: <span class="text-white">{{ item.get('Demora', 'N/A') }}</span></div>
+                                <div class="text-right">
+                                    <div class="text-xs text-white/90">Precio:</div>
+                                    <div class="text-xl font-extrabold">{{ item.get('Precio', 'N/A') }} Gs</div> <!--  precio del servicio, el mas alto  -->
                                 </div>
                             </div>
 
-                            <div class="flex gap-2 mt-4">
-                                <a href="https://wa.me/5491234567890?text=Hola!%20Me%20interesaría%20agendar%20el%20{{ item.get('Nombre de lavado', 'Servicio')|urlencode }}.%20¿Cuándo%20tendrían%20disponibilidad?" target="_blank" class="flex-1 block w-full bg-white text-orange-500 text-center py-2 rounded-full font-bold hover:bg-gray-100 transition shadow-lg text-sm">
+                            <div class="mt-auto flex gap-3">
+                                <a href="https://wa.me/5491234567890?text=Hola!%20Me%20interesaría%20agendar%20el%20{{ item.get('Nombre de lavado', 'Servicio')|urlencode }}.%20¿Cuándo%20tendrían%20disponibilidad?" target="_blank" class="flex-1 block bg-white text-orange-500 text-center py-2 rounded-full font-bold hover:bg-gray-100 transition shadow-lg text-sm">
                                     Agendar
                                 </a>
                                 <button class="flip-btn flex-1 bg-white text-orange-500 text-center py-2 rounded-full font-bold hover:bg-gray-100 transition shadow-lg text-sm">
@@ -346,21 +371,22 @@
                         </div>
 
                         <!-- Back of card -->
-                        <div class="service-card-back w-full h-full absolute inset-0 p-6 sm:p-8 flex flex-col bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl" style="backface-visibility: hidden; transform: rotateY(180deg);">
-                            <h4 class="text-lg font-bold mb-3">Detalle de lavado</h4>
-                            <div class="detail-container flex-grow flex flex-col">
-                                <div class="detail-list text-white/90 text-xs leading-tight space-y-1 mb-3">
-                                    {% for linea in item.get('Detalle de lavado', '').split('\n') %}
-                                        {% if linea.strip() %}
-                                            <div class="flex items-start">
-                                                <span class="mr-2 flex-shrink-0">✓</span>
-                                                <span>{{ linea.strip() }}</span>
+                        <div class="service-card-back w-full h-full absolute inset-0 p-4 flex flex-col bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl" style="backface-visibility: hidden; transform: rotateY(180deg);"> <!-- reverso de la tarjeta  -->
+                            <h4 class="text-lg font-bold mb-3 text-center">Detalle de lavado</h4> <!--  título del detalle centrado -->
+                            <div class="detail-container flex-grow relative"> <!--  contenedor del detalle  -->
+                                <div class="detail-list text-white/90 text-xs leading-tight space-y-2 mb-3 pr-2 overflow-auto" style="max-height: calc(100% - 4rem);"> <!--  letra más chica (text-xs) -->
+                                    {% for linea in item.get('Detalle de lavado', '').split('\n') %} <!--  bucle para cada línea del detalle  -->
+                                        {% if linea.strip() %} <!--  verifica que la línea no esté vacía  -->
+                                            <div class="flex items-start"> <!--  contenedor de cada línea con ícono  -->
+                                                <span class="mr-3 flex-shrink-0">✓</span> <!--  ícono de check  -->
+                                                <span class="text-xs">{{ linea.strip()|lower|capitalize }}</span> <!--  inicio en mayúscula -->
                                             </div>
-                                        {% endif %}
-                                    {% endfor %}
+                                        {% endif %} <!--  cierre del condicional if  -->
+                                    {% endfor %} <!--  cierre del bucle for  -->
                                 </div>
                             </div>
-                            <button class="flip-btn w-full bg-white text-orange-500 text-center py-2 rounded-full font-bold hover:bg-gray-100 transition shadow-lg text-sm">
+
+                            <button class="flip-btn w-44 mx-auto bg-white text-orange-500 text-center py-2 rounded-full font-bold hover:bg-gray-100 transition shadow-lg text-sm absolute left-1/2 -translate-x-1/2 bottom-4">
                                 Volver
                             </button>
                         </div>
@@ -368,60 +394,58 @@
                 </div>
 
                 {% else %}
-                <!-- Tarjeta Premium estándar (mismo diseño que estándar) -->
-                <div class="service-card flex-shrink-0 w-[88vw] sm:w-80 h-auto min-h-[30rem] sm:min-h-[30rem] bg-blue-600 text-white border-2 border-gray-200 rounded-3xl relative overflow-hidden cursor-pointer" style="perspective: 1000px;">
-                    <div class="service-card-inner w-full h-full relative transition-transform duration-500" style="transform-style: preserve-3d;">
-
-                        <!-- Front of card -->
-                        <div class="service-card-front w-full h-full absolute inset-0 p-8 flex flex-col" style="backface-visibility: hidden;">
-                            <div class="bg-white w-16 h-16 rounded-2xl flex items-center justify-center mb-4">
-                                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
+                <!-- Tarjeta Premium compacta (mejor para móvil) --> 
+                <div class="service-card flex-shrink-0 w-72 sm:w-80 md:w-80 h-auto min-h-[16rem] bg-blue-600 text-white border-2 border-blue-700 rounded-3xl relative overflow-hidden cursor-pointer p-3 sm:p-4" style="perspective:1000px;">  <!-- contenedor de la tarjeta  -->
+                    <div class="service-card-inner w-full h-full relative transition-transform duration-500 flex flex-col justify-between" style="transform-style: preserve-3d;">
+                        <!-- Front of card (compact) -->
+                        <div class="service-card-front w-full h-full absolute inset-0 flex flex-col" style="backface-visibility: hidden;"> <!-- frente de la tarjeta  -->
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="bg-white w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"> <!--  ícono con fondo blanco  -->
+                                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <h4 class="text-base sm:text-lg font-bold uppercase truncate">{{ item.get('Nombre de lavado', 'Servicio') }}</h4> <!--  título del servicio  -->
                             </div>
-                            <div class="card-info flex-grow">
-                                <h4 class="text-xl font-bold text-white mb-2">{{ item.get('Nombre de lavado', 'Servicio') }}</h4>
-                                <p class="text-sm leading-relaxed mb-3">
-                                    {{ item.get('Descripcion', '') }}
-                                </p>
-                                <div class="border-t border-gray-200 pt-2">
-                                    <div class="flex justify-between items-center mb-1">
-                                        <span class="text-white text-xs">Precio:</span>
-                                        <span class="text-xl font-bold text-white">{{ item.get('Precio', 'N/A') }} Gs</span>
-                                    </div>
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-gray-200 text-xs">Duración:</span>
-                                        <span class="text-gray-200 text-xs">{{ item.get('Demora', 'N/A') }}</span>
-                                    </div>
+
+                            <p class="text-xs sm:text-sm leading-relaxed mb-3 text-white/90 flex-grow" style="text-align: justify;">   <!--  descripción del servicio  -->
+                                {{ item.get('Descripcion', '') }} <!--  descripción del servicio  -->
+                            </p>
+
+                            <div class="border-t border-white/20 pt-2 mb-3 flex items-center justify-between text-xs sm:text-sm"> <!--  contenedor de duración y precio  -->
+                                <div>Duración: <span class="font-semibold">{{ item.get('Demora', 'N/A') }}</span></div> <!--  duración del servicio  -->
+                                <div class="text-right">
+                                    <div class="text-xs text-white/90">Precio:</div> <!--  etiqueta de precio  -->
+                                    <div class="text-lg sm:text-xl font-extrabold">{{ item.get('Precio', 'N/A') }} Gs</div>
                                 </div>
                             </div>
 
-                            <div class="flex gap-2 mt-4">
-                                <a href="https://wa.me/5491234567890?text=Hola!%20Me%20interesaría%20agendar%20el%20{{ item.get('Nombre de lavado', 'Servicio')|urlencode }}.%20¿Cuándo%20tendrían%20disponibilidad?" target="_blank" class="flex-1 block w-full bg-white text-blue-600 text-center py-2 rounded-full font-bold hover:bg-gray-100 transition text-sm">
+                            <div class="mt-auto flex gap-2">
+                                <a href="https://wa.me/5491234567890?text=Hola!%20Me%20interesaría%20agendar%20el%20{{ item.get('Nombre de lavado', 'Servicio')|urlencode }}.%20¿Cuándo%20tendrían%20disponibilidad?" target="_blank" class="flex-1 block bg-white text-blue-600 text-center py-2 rounded-full font-bold hover:bg-gray-100 transition text-xs sm:text-sm">
                                     Agendar
                                 </a>
-                                <button class="flip-btn flex-1 bg-white text-blue-600 text-center py-2 rounded-full font-bold hover:bg-gray-100 transition text-sm">
+                                <button class="flip-btn w-24 sm:flex-1 bg-white/10 border border-white/20 text-white text-center py-2 rounded-full font-semibold hover:bg-white/20 transition text-xs sm:text-sm">
                                     Ver más
                                 </button>
                             </div>
                         </div>
 
                         <!-- Back of card -->
-                        <div class="service-card-back w-full h-full absolute inset-0 p-8 flex flex-col bg-blue-600 text-white rounded-3xl" style="backface-visibility: hidden; transform: rotateY(180deg);">
-                            <h4 class="text-lg font-bold mb-3">Detalle de lavado</h4>
-                            <div class="detail-container flex-grow flex flex-col">
-                                <div class="detail-list text-white text-sm leading-relaxed space-y-1 mb-3">
+                        <div class="service-card-back w-full h-full absolute inset-0 p-4 flex flex-col bg-blue-600 text-white rounded-3xl" style="backface-visibility: hidden; transform: rotateY(180deg);">
+                            <h4 class="text-base font-bold mb-3 text-white text-center">Detalle de lavado</h4> <!--  título centrado  -->
+                            <div class="detail-container flex-grow relative">
+                                <div class="detail-list text-white text-xs leading-tight space-y-2 mb-3 pr-2 overflow-auto" style="max-height: calc(100% - 4rem);"> <!--  contenedor del detalle con scroll, letra más chica  -->
                                     {% for linea in item.get('Detalle de lavado', '').split('\n') %}
-                                        {% if linea.strip() %}
+                                        {% if linea.strip() %} <!--  verifica que la línea no esté vacía  -->
                                             <div class="flex items-start">
-                                                <span class="mr-2 flex-shrink-0">✓</span>
-                                                <span>{{ linea.strip() }}</span>
+                                                <span class="mr-3 flex-shrink-0">✓</span>
+                                                <span class="text-xs">{{ linea.strip()|lower|capitalize }}</span> <!--  inicio en mayúscula  -->
                                             </div>
                                         {% endif %}
                                     {% endfor %}
                                 </div>
                             </div>
-                            <button class="flip-btn w-full bg-white text-blue-600 text-center py-2 rounded-full font-bold hover:bg-gray-100 transition text-sm">
+                            <button class="flip-btn w-44 mx-auto bg-white text-blue-600 text-center py-2 rounded-full font-bold hover:bg-gray-100 transition shadow-lg text-sm absolute left-1/2 -translate-x-1/2 bottom-4">
                                 Volver
                             </button>
                         </div>
@@ -435,85 +459,88 @@
         </div>
     </section>
 
-    <!-- Corporate Experience Section -->  <!-- cambiar tambien esto, mas chico -->
-    <section id="experiencia-corporativa" class="py-20 bg-blue-600 text-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-4">
-                <h2 class="text-4xl md:text-2xl font-bold text-white mb-4">
-                    Experiencia <span class="text-blue-200">Corporativa</span>
+    <!-- Corporate Experience Section -->  
+    <section id="experiencia-corporativa" class="pt-24 md:pt-16 pb-6 bg-blue-600 text-white rounded-t-[60px]">  <!-- pt es para separar del borde redondeado de arriba, md: pt es para pantallas medianas , pb es para separar del borde inferior  -->
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-6">
+                <h2 class="inline-block text-white font-bold text-4xl mb-3">
+                    EXPERIENCIA <span class="text-blue-200">CORPORATIVA</span>
                 </h2>
-                <p class="text-xl text-blue-100 max-w-3xl mx-auto">
-                    ¿Tenés una flota de vehículos? Nosotros la cuidamos por vos.
+                <p class="text-white text-blue-100 max-w-2xl mx-auto">
+                    ¿Tenés una flota de vehículos?<span> Nosotros la cuidamos por vos.</span>
                 </p>
             </div>
 
-            <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Mantenimiento Profesional -->
-                    <div class="group bg-white rounded-2xl p-6 shadow-md hover:shadow-xl hover:bg-blue-50 transition-all duration-300 border border-gray-100 hover:border-blue-200">
-                        <div class="flex items-start gap-4">
-                            <div class="bg-white text-blue-600 w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border-2 border-blue-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <div class="group bg-white rounded-2xl p-4 shadow-sm hover:shadow-md hover:bg-blue-50 transition-all duration-200 border border-gray-100 hover:border-blue-200">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-white text-blue-600 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 border-2 border-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="currentColor" class="w-5 h-5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="text-lg font-bold text-blue-600 mb-1">Mantenimiento Profesional</h4>
-                                <p class="text-gray-600">Tus vehículos limpios, protegidos y listos para trabajar todos los días.</p>
+                                <h4 class="text-base font-bold text-blue-600 mb-1">Mantenimiento Profesional</h4>
+                                <p class="text-gray-600 text-sm">Tus vehículos limpios, protegidos y listos para trabajar todos los días.</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Reducción de Costos -->
-                    <div class="group bg-white rounded-2xl p-6 shadow-md hover:shadow-xl hover:bg-blue-50 transition-all duration-300 border border-gray-100 hover:border-blue-200">
-                        <div class="flex items-start gap-4">
-                            <div class="bg-white text-blue-600 w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border-2 border-blue-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <div class="group bg-white rounded-2xl p-4 shadow-sm hover:shadow-md hover:bg-blue-50 transition-all duration-200 border border-gray-100 hover:border-blue-200">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-white text-blue-600 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 border-2 border-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="currentColor" class="w-5 h-5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6 9 12.75l4.286-4.286a11.948 11.948 0 0 1 4.306 6.43l.776 2.898m0 0 3.182-5.511m-3.182 5.51-5.511-3.181" />
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="text-lg font-bold text-blue-600 mb-1">Reducción de Costos</h4>
-                                <p class="text-gray-600">Evitá tiempos muertos y asegurá una imagen impecable frente a tus clientes.</p>
+                                <h4 class="text-base font-bold text-blue-600 mb-1">Reducción de Costos</h4>
+                                <p class="text-gray-600 text-sm">Evitá tiempos muertos y asegurá una imagen impecable frente a tus clientes.</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Soluciones Personalizadas -->
-                    <div class="group bg-white rounded-2xl p-6 shadow-md hover:shadow-xl hover:bg-blue-50 transition-all duration-300 border border-gray-100 hover:border-blue-200">
-                        <div class="flex items-start gap-4">
-                            <div class="bg-white text-blue-600 w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border-2 border-blue-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <div class="group bg-white rounded-2xl p-4 shadow-sm hover:shadow-md hover:bg-blue-50 transition-all duration-200 border border-gray-100 hover:border-blue-200">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-white text-blue-600 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 border-2 border-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="currentColor" class="w-5 h-5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="text-lg font-bold text-blue-600 mb-1">Soluciones Personalizadas</h4>
-                                <p class="text-gray-600">Nos adaptamos a tu volumen, frecuencia y necesidades específicas.</p>
+                                <h4 class="text-base font-bold text-blue-600 mb-1">Soluciones Personalizadas</h4>
+                                <p class="text-gray-600 text-sm">Nos adaptamos a tu volumen, frecuencia y necesidades específicas.</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Sin Interrupciones -->
-                    <div class="group bg-white rounded-2xl p-6 shadow-md hover:shadow-xl hover:bg-blue-50 transition-all duration-300 border border-gray-100 hover:border-blue-200">
-                        <div class="flex items-start gap-4">
-                            <div class="bg-white text-blue-600 w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border-2 border-blue-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <div class="group bg-white rounded-2xl p-4 shadow-sm hover:shadow-md hover:bg-blue-50 transition-all duration-200 border border-gray-100 hover:border-blue-200">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-white text-blue-600 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 border-2 border-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="currentColor" class="w-5 h-5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="text-lg font-bold text-blue-600 mb-1">Sin Interrupciones</h4>
-                                <p class="text-gray-600">Llevamos el lavadero a tu empresa sin afectar tus operaciones diarias.</p>
+                                <h4 class="text-base font-bold text-blue-600 mb-1">Sin Interrupciones</h4>
+                                <p class="text-gray-600 text-sm">Llevamos el lavadero a tu empresa sin afectar tus operaciones diarias.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- wha Button -->
-                <div class="text-center mt-16 px-4">
-                    <a href="https://wa.me/595972614469?text=Hola!%20Quisiera%20consultar%20sobre%20el%20servicio%20corporativo%20para%20mi%20flota%20de%20vehículos." target="_blank" class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-white text-blue-700 px-6 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-lg border border-blue-100 hover:bg-blue-50 hover:border-blue-200 transition shadow-xl hover:shadow-2xl transform hover:scale-105 duration-300">
-                        <span>Consultar Servicio Corporativo</span>
+                <!-- Consultar Button -->
+                <div class="text-center mt-8 px-2">
+                    <a href="https://wa.me/595972614469?text=Hola!%20Quisiera%20consultar%20sobre%20el%20servicio%20corporativo%20para%20mi%20flota%20de%20vehículos." target="_blank" aria-label="Consultar servicio corporativo"
+                       class="inline-flex items-center justify-center gap-2 bg-white/20 backdrop-blur-sm text-white px-8 py-2.5 rounded-full font-semibold text-sm uppercase tracking-wide shadow-md border border-white/30 hover:bg-white/30 transform transition duration-150 hover:scale-105">
+                        Consultar servicio corporativo
+                    </a>
+                </div>
                     </a>
                 </div>
             </div>
@@ -521,7 +548,7 @@
     </section>
 
 
-    <!-- SECCION QUE HACEIMSO CAMBIAR/AGREGAR AL NAV EL ID -->
+    <!-- What We Do Section -->
     <section id="que-hacemos" class="py-12 bg-gray-100">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
@@ -576,10 +603,10 @@
 
                         <!-- Arrows removed -->
 
-                        <!-- Dots Indicator -->
-                        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                            <button class="carousel-dot w-2 h-2 rounded-full bg-white/60 transition" data-slide="0"></button>
-                            <button class="carousel-dot w-2 h-2 rounded-full bg-white/60 transition" data-slide="1"></button>
+                        <!-- Dots Indicator --> <!-- indicador de puntos  -->
+                        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10"> <!-- centrado horizontalmente  -->
+                            <button class="carousel-dot w-2 h-2 rounded-full bg-white/60 transition" data-slide="0"></button> <!-- cada boton representa un slide  -->
+                            <button class="carousel-dot w-2 h-2 rounded-full bg-white/60 transition" data-slide="1"></button> <!-- data-slide indica a qué slide corresponde el botón  -->
                             <button class="carousel-dot w-2 h-2 rounded-full bg-white/60 transition" data-slide="2"></button>
                             <button class="carousel-dot w-2 h-2 rounded-full bg-white/60 transition" data-slide="3"></button>
                             <button class="carousel-dot w-2 h-2 rounded-full bg-white/60 transition" data-slide="4"></button>
@@ -590,179 +617,10 @@
         </div>
     </section>
 
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.carousel-dot');
-        const totalSlides = slides.length;
 
-        function updateCarousel() {
-            slides.forEach((slide, index) => {
-                slide.style.opacity = index === currentSlide ? '1' : '0';
-            });
-            dots.forEach((dot, index) => {
-                dot.style.backgroundColor = index === currentSlide ? 'white' : 'rgba(255,255,255,0.6)';
-            });
-        }
-
-        const nextBtn = document.getElementById('carouselNext');
-        const prevBtn = document.getElementById('carouselPrev');
-
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                updateCarousel();
-            });
-        }
-
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                updateCarousel();
-            });
-        }
-
-        dots.forEach(dot => {
-            dot.addEventListener('click', (e) => {
-                currentSlide = parseInt(e.target.dataset.slide);
-                updateCarousel();
-            });
-        });
-
-        updateCarousel();
-
-        // Auto-rotate every 1 second
-        if (totalSlides > 1) {
-            setInterval(() => {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                updateCarousel();
-            }, 1500);
-        }
-        
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Flip button handler
-            document.querySelectorAll('.flip-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const inner = btn.closest('.service-card-inner');
-                    if (!inner) {
-                        return; // safety guard if markup changes
-                    }
-                    const isFlipped = inner.style.transform === 'rotateY(180deg)';
-                    inner.style.transform = isFlipped ? 'rotateY(0deg)' : 'rotateY(180deg)';
-                });
-            });
-
-            // Toggle detail expand/collapse handler
-            document.querySelectorAll('.toggle-detail').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const container = btn.closest('.detail-container');
-                    const detailList = container.querySelector('.detail-list');
-                    const isExpanded = detailList.style.maxHeight === '12rem';
-                    
-                    if (isExpanded) {
-                        detailList.style.maxHeight = '8rem';
-                        btn.textContent = 'Ver más detalles';
-                    } else {
-                        detailList.style.maxHeight = '12rem';
-                        btn.textContent = 'Ver menos';
-                    }
-                });
-            });
-        });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const initSlider = (trackId, prevId, nextId) => {
-                const track = document.getElementById(trackId);
-                const prev = document.getElementById(prevId);
-                const next = document.getElementById(nextId);
-                if (!track || !prev || !next) return;
-
-                const cards = Array.from(track.children);
-                if (!cards.length) return;
-
-                let index = 0;
-
-                const getStep = () => {
-                    const first = cards[0];
-                    const rect = first.getBoundingClientRect();
-                    const cs = getComputedStyle(track);
-                    const gap = parseFloat(cs.columnGap || cs.gap || '0') || 0;
-                    return rect.width + gap;
-                };
-
-                const getMaxIndex = () => {
-                    const container = track.parentElement;
-                    const containerWidth = container.clientWidth;
-                    const totalCardsWidth = cards.reduce((sum, card) => {
-                        const rect = card.getBoundingClientRect();
-                        return sum + rect.width;
-                    }, 0);
-                    const gaps = (cards.length - 1) * (parseFloat(getComputedStyle(track).gap || '24') || 0);
-                    
-                    // Si todas las tarjetas caben en la pantalla, max index es 0
-                    if (totalCardsWidth + gaps <= containerWidth) {
-                        return 0;
-                    }
-                    
-                    // Calcular cuántas posiciones se pueden scrollear
-                    const step = getStep();
-                    const maxScroll = totalCardsWidth + gaps - containerWidth;
-                    return Math.ceil(maxScroll / step);
-                };
-
-                const update = () => {
-                    const step = getStep();
-                    const maxIdx = getMaxIndex();
-
-                    // Ajustar índice si el resize hace que todo quepa
-                    if (index > maxIdx) {
-                        index = maxIdx;
-                    }
-
-                    // Ocultar flechas si no se necesita scroll
-                    const hideArrows = maxIdx === 0;
-                    prev.style.display = hideArrows ? 'none' : '';
-                    next.style.display = hideArrows ? 'none' : '';
-
-                    // Centrar si no hace falta scroll
-                    track.style.justifyContent = hideArrows ? 'center' : 'flex-start';
-
-                    track.style.transform = `translateX(-${index * step}px)`;
-                };
-
-                prev.addEventListener('click', () => {
-                    if (index > 0) {
-                        index--;
-                        update();
-                    }
-                });
-
-                next.addEventListener('click', () => {
-                    const maxIdx = getMaxIndex();
-                    if (index < maxIdx) {
-                        index++;
-                        update();
-                    }
-                });
-
-                // Recalculate on resize to keep alignment
-                window.addEventListener('resize', update);
-                update();
-            };
-
-            initSlider('standard-track', 'standard-prev', 'standard-next');
-            initSlider('premium-track', 'premium-prev', 'premium-next');
-        });
-    </script>
 
     <!-- Contact Section -->
-    <section id="contacto" class="py-20 bg-blue-600 text-white">
+    <section id="contacto" class="py-20 bg-blue-600 text-white rounded-t-[60px]">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 class="text-white font-bold text-lg mb-3">CONTACTO</h2>
@@ -788,26 +646,39 @@
                     </div>
                 </div>
 
-                <!-- Social Media -->
-                <div class="text-center">
-                    <p class="text-gray-600 mb-4 font-medium">Seguinos en redes sociales</p>
-                    <div class="flex justify-center space-x-4">
-                        <a href="#" class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-blue-700 transition">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                <!-- Social Media (mejorado) -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-6 shadow-lg md:flex md:items-center md:justify-between md:gap-8 space-y-6 md:space-y-0 border border-white/20">
+                    <div class="text-center md:text-left">
+                        <p class="text-white  text-lg">SEGUINOS EN NUESTRAS REDES</p>
+                        <p class="text-white/90 text-sm">Enterate de promos, novedades y ofertas exclusivas.</p>
+                    </div>
+
+                    <div class="flex items-center gap-8 justify-center md:justify-start mt-2 md:mt-0">
+                        <a href="https://www.facebook.com/" target="_blank" rel="noreferrer"
+                           class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-700 hover:bg-blue-800 text-white shadow-md transform transition duration-200"
+                           aria-label="Facebook" title="Facebook">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 4.99 3.66 9.12 8.44 9.95v-7.05H8.1v-2.9h2.33V9.03c0-2.3 1.37-3.57 3.46-3.57.99 0 2.03.18 2.03.18v2.23h-1.14c-1.12 0-1.47.7-1.47 1.42v1.7h2.5l-.4 2.9h-2.1v7.05C18.34 21.19 22 17.06 22 12.07z"/>
                             </svg>
                         </a>
-                        <a href="https://www.instagram.com/washmotors.py/" target="_blank" rel="noreferrer" class="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-pink-700 transition">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+
+                        <a href="https://www.instagram.com/washmotors.py/" target="_blank" rel="noreferrer"
+                           class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-tr from-pink-500 to-yellow-400 hover:from-pink-600 hover:to-yellow-500 text-white shadow-md transform transition duration-200"
+                           aria-label="Instagram" title="Instagram">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.5A4.5 4.5 0 1 0 16.5 13 4.5 4.5 0 0 0 12 8.5zm6.5-.9a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1z"/>
                             </svg>
                         </a>
-                        <a href="#" class="bg-blue-400 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-blue-500 transition">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+
+                        <a href="https://wa.me/595972614469" target="_blank" rel="noreferrer"
+                           class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-md transform transition duration-200"
+                           aria-label="WhatsApp" title="WhatsApp">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.373 0 .068 5.284.068 11.813c0 2.082.544 4.12 1.578 5.93L0 24l6.52-1.644a11.8 11.8 0 0 0 5.48 1.34h.006c6.627 0 11.93-5.284 11.93-11.813 0-3.165-1.242-6.134-3.436-8.383zM12 21.5a9.63 9.63 0 0 1-4.93-1.32l-.35-.208L4 20l1.04-2.72-.23-.36A9.54 9.54 0 1 1 21.5 12 9.63 9.63 0 0 1 12 21.5zM17 14.2c-.25-.12-1.48-.73-1.7-.82-.23-.09-.4-.12-.57.12-.17.25-.65.82-.8.99-.15.17-.3.19-.55.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.38-1.73-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.42.09-.17.05-.32-.02-.44-.07-.12-.57-1.38-.78-1.89-.2-.5-.41-.43-.58-.44-.15-.01-.33-.01-.5-.01-.17 0-.45.06-.69.32-.24.26-.93.91-.93 2.22 0 1.3.95 2.55 1.08 2.73.13.18 1.86 2.84 4.52 3.87 2.66 1.04 2.66.69 3.14.65.48-.04 1.55-.63 1.77-1.24.22-.61.22-1.13.15-1.24-.08-.12-.28-.17-.53-.29z"/>
                             </svg>
                         </a>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

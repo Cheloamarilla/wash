@@ -6,13 +6,31 @@ html {
     scroll-behavior: smooth;
 }
 
-.hero-bg {
-    background-image: linear-gradient(rgba(0, 96, 246, 0.7), rgba(0, 0, 0, 0.6)), 
+.hero-bg { /* Hero background with gradient overlay */
+    background-image: linear-gradient(rgba(0, 96, 246, 0.7), rgba(0, 0, 0, 0.6)), /* gradient overlay */
                       url('/static/img/imagen_fondo.png');
-    background-size: cover;
+    background-size: cover; /* cubrir toda el area */
     background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.95;
+    background-repeat: no-repeat; /* no reetir la imagen */
+    opacity: 0.20; /* Adjust opacity as needed */
+}
+
+/* Services pill style (centered overlapping element) */
+.services-pill {
+    pointer-events: none; /* decorative */
+}
+.services-pill .pill {
+    pointer-events: auto;
+}
+.services-pill .icon-circle img {
+    display: block;
+}
+
+/* Slightly larger hero on small screens to match reference image */
+@media (max-width: 768px) {
+    .hero-card-small {
+        height: 42vh !important;
+    }
 }
 
 header {
@@ -84,6 +102,31 @@ header {
 
 .card-info {
     flex-grow: 1;
+}
+
+/* Compact card overrides for mobile-first density */
+.service-card-front,
+.service-card-back {
+    padding: 0.75rem !important;
+}
+
+.service-card-front h4,
+.service-card-back h4 {
+    margin: 0;
+}
+
+.service-card-front p {
+    margin-bottom: 0.4rem;
+}
+
+.service-card .detail-list {
+    max-height: 8rem;
+    overflow: auto;
+}
+
+/* Keep the action button visually anchored near the bottom but not glued to the edge */
+.service-card-back .flip-btn {
+    margin-top: 0.5rem;
 }
 
 .card-button {
