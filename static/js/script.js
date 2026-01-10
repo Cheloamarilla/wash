@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Script loaded successfully');
     
     // ========== Hide header on scroll down, show on scroll up ==========
     const header = document.querySelector('header');
@@ -45,12 +46,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ========== Service Card Flip Functionality ==========
-    document.querySelectorAll('.flip-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
+    const flipButtons = document.querySelectorAll('.flip-btn');
+    console.log('Flip buttons found:', flipButtons.length);
+    
+    flipButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            console.log('Flip button clicked');
+            e.preventDefault();
+            e.stopPropagation();
             const inner = btn.closest('.service-card-inner');
             if (inner) {
                 const isFlipped = inner.style.transform === 'rotateY(180deg)';
                 inner.style.transform = isFlipped ? 'rotateY(0deg)' : 'rotateY(180deg)';
+                console.log('Card flipped:', !isFlipped);
             }
         });
     });
@@ -93,10 +101,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const prev = document.getElementById(prevId);
         const next = document.getElementById(nextId);
         
-        if (!track || !prev || !next) return;
+        console.log(`Initializing slider: ${trackId}`, { track, prev, next });
+        
+        if (!track || !prev || !next) {
+            console.warn(`Slider ${trackId} missing elements`);
+            return;
+        }
 
         const cards = Array.from(track.children);
-        if (!cards.length) return;
+        if (!cards.length) {
+            console.warn(`Slider ${trackId} has no cards`);
+            return;
+        }
+        
+        console.log(`Slider ${trackId} initialized with ${cards.length} cards`);
 
         let index = 0;
 
@@ -143,6 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         prev.addEventListener('click', () => {
+            console.log(`${trackId} prev clicked, current index:`, index);
             if (index > 0) {
                 index--;
                 update();
@@ -151,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         next.addEventListener('click', () => {
             const maxIdx = getMaxIndex();
+            console.log(`${trackId} next clicked, current index:`, index, 'max:', maxIdx);
             if (index < maxIdx) {
                 index++;
                 update();
