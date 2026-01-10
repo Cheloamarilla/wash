@@ -72,32 +72,9 @@
                         WhatsApp
                     </a>
                 </div>
-
-                <!-- Mobile hamburger -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" aria-label="Abrir menú" class="p-2 rounded-lg text-blue-600 bg-white/10 hover:bg-white/20">    <!-- botón para abrir el menú móvil  -->
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /> <!-- ícono de hamburguesa  -->
-                        </svg>
-                    </button>
-                </div>
             </div>
         </div>
     </header>
-
-<!-- Mobile Menu, hidden by default, shown when hamburger is clicked -->
-    <div id="mobile-menu" class="mobile-menu hidden md:hidden fixed inset-x-0 top-16 bg-blue-600 z-50 shadow-lg">
-        <div class="px-6 py-6">
-            <nav class="flex flex-col gap-4">
-                <a href="#inicio" class="text-white">Inicio</a>
-                <a href="#servicios" class="text-white">Servicios</a>
-                <a href="#experiencia-corporativa" class="text-white">Corporativo</a>
-                <a href="#que-hacemos" class="text-white">Qué hacemos</a>
-                <a href="#contacto" class="text-white">Contacto</a>
-                <a href="https://wa.me/595972614469" target="_blank" class="mt-2 inline-block bg-white text-gray-800 px-4 py-2 rounded-full text-center">WhatsApp</a>
-            </nav>
-        </div>
-    </div>
 
     <section id="inicio" class="bg-white pt-16 md:pt-24">
         <div class="max-w-7xl mx-auto px-4">           
@@ -148,7 +125,7 @@
     </section>
 
     <!-- Services Section - Standard -->
-    <section id="servicios" class="pt-14 pb-16 bg-blue-600 rounded-t-[60px]"> 
+    <section id="servicios" class="pt-14 pb-24 md:pb-16 bg-blue-600 rounded-t-[60px]"> 
         <div class="container mx-auto px-4">
             <div class="text-center mb-12"> 
                 <h2 class="inline-block text-blue-600 font-bold text-2xl mb-1 my-4 bg-white px-4 py-2 rounded-full gap-3 -mt-1">NUESTROS SERVICIOS</h2>
@@ -307,7 +284,7 @@
     </section>
 
      <!-- Services Section - Premium (igual a estándar) -->
-    <section class="pt-14 pb-16 bg-white rounded-t-[60px]">
+    <section class="pt-14 pb-24 md:pb-16 bg-white rounded-t-[60px]">
         <div class="container mx-auto px-4"> <!-- contenedor centrado  -->
             <div class="text-center mb-12"> <!-- título y descripción centrados, más cerca del contenedor superior -->
                 <h2 class="inline-block text-white font-bold text-2xl mb-1 my-4 bg-blue-600 px-4 py-2 rounded-full gap-3 -mt-1">EXPERIENCIA PREMIUM</h2> <!-- título y descripción centrados  -->
