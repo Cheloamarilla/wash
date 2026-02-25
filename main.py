@@ -1,11 +1,15 @@
 import csv
 import requests
+import os
 from io import StringIO
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi.middleware.cors import CORSMiddleware
+
+# 📁 Obtener ruta base del proyecto
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 app = FastAPI()
 
@@ -30,10 +34,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
 
-# 👇 Servimos CSS, JS, imágenes, etc.
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# 👇 Servimos CSS, JS, imágenes, etc. con ruta absoluta
+static_dir = os.path.join(BASE_DIR, "static")
+if os.path.exists(static_dir):
+    app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
 CSV_URL = "https://docs.google.com/spreadsheets/d/1wCeeO7EnrESFsCdEFN-5oTPyHCXAEjypiaIDYgTnXl4/export?format=csv"
 
