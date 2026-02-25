@@ -1,10 +1,16 @@
-// 🔗 CONFIGURACIÓN - En Netlify, usa ruta relativa
-const API_URL = ''; // Ruta relativa al mismo server
+// 🔗 CONFIGURACIÓN - Detecta ambiente (local o Netlify)
+const API_URL = window.location.hostname === 'localhost' 
+    ? 'http://localhost:3000'
+    : '/.netlify/functions';
 
 // Carga datos desde la API
 async function loadServices() {
     try {
-        const response = await fetch(`${API_URL}/items`);
+        const endpoint = window.location.hostname === 'localhost'
+            ? `${API_URL}/items`
+            : `${API_URL}/items`;
+        
+        const response = await fetch(endpoint);
         if (!response.ok) throw new Error('Error en la API');
         return await response.json();
     } catch (error) {
