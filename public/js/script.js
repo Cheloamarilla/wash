@@ -137,7 +137,7 @@ function createServiceCard(item, maxPrice, isPremium = false) {
                     <!-- Back -->
                     <div class="service-card-back w-full h-full absolute inset-0 p-4 flex flex-col justify-between ${isPremium ? 'bg-blue-700' : 'bg-blue-50'} ${darkText} rounded-3xl" style="backface-visibility: hidden; transform: rotateY(180deg);">
                         <div>
-                            <h4 class="text-lg font-bold mb-6 text-center">${isPremium ? 'text-white' : ''">Detalle de lavado</h4>
+                            <h4 class="text-lg font-bold mb-6 text-center ${isPremium ? 'text-white' : ''}">Detalle de lavado</h4>
                             <div class="detail-container flex flex-col">
                                 <blockquote class="detail-list ${isPremium ? 'text-white' : 'text-blue-700'} text-sm leading-tight space-y-2 mb-2 pl-3 border-l-2 ${isPremium ? 'border-white/30' : 'border-blue-200'} italic">
                                     ${detallesList}
