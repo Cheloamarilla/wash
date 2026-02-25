@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WASH MOTORS - Tu Comodidad Nuestra Prioridad</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Iso_WashMotors-LOGO.png">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Fredoka', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS PROPIO -->
+    <link rel="stylesheet" href="./css/styles.css?v=1.10">
+    
+    <style>
+        :root {
+            --api-url: 'https://tu-usuario.pythonanywhere.com';
+        }
+    </style>
+</head>
+<body class="bg-white pb-20 md:pb-0">
+    
+    <!-- Header -->
+    <header class="bg-gradient-to-b from-black to-blue-600 text-white py-3 fixed w-full top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#inicio" aria-label="Ir al inicio">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logotipo%20blanco%20Wash%20Motors-WHITE-LOGO.png" alt="WASH MOTORS Logo" class="h-12 md:h-16">
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-12 items-center">
+                    <a href="#inicio" class="text-white hover:text-blue-200 transition">INICIO</a>
+                    <a href="#servicios" class="text-white hover:text-blue-200 transition">SERVICIOS</a>
+                    <a href="#experiencia-corporativa" class="text-white hover:text-blue-200 transition">EXPERIENCIA CORPORATIVA</a>
+                    <a href="#que-hacemos" class="text-white hover:text-blue-200 transition">QUÉ HACEMOS</a>
+                    <a href="#agenda" class="text-white hover:text-blue-200 transition">CONTACTO</a>
+                </nav>
+
+                <!-- Contact Info Desktop -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="https://wa.me/595972614469" target="_blank" class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-full transition font-semibold text-white">
+                        WhatsApp
+                    </a>
+                </div>
+
+                <!-- Mobile WhatsApp -->
+                <div class="md:hidden flex items-center">
+                    <a href="https://wa.me/595972614469" target="_blank" aria-label="Contactar por WhatsApp" class="p-2">
+                        <svg class="w-8 h-8 text-gray-300" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu hidden md:hidden fixed inset-x-0 top-16 bg-blue-600 z-50 shadow-lg">
+        <div class="px-6 py-6">
+            <nav class="flex flex-col gap-4">
+                <a href="#inicio" class="text-white">Inicio</a>
+                <a href="#servicios" class="text-white">Servicios</a>
+                <a href="#experiencia-corporativa" class="text-white">Corporativo</a>
+                <a href="#que-hacemos" class="text-white">Qué hacemos</a>
+                <a href="#contacto" class="text-white">Contacto</a>
+                <a href="https://wa.me/595972614469" target="_blank" class="mt-2 inline-block bg-white text-gray-800 px-4 py-2 rounded-full text-center">WhatsApp</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="bg-white pt-16 md:pt-16 bg-gray-50">
+        <div class="relative h-[30vh] md:h-[50vh] overflow-hidden shadow-xl">
+            <!-- Fondo imagen -->
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/imagen_fondo-HERO.png');">
+            </div>
+            <div class="absolute inset-0 bg-white/10"></div>
+            <!-- Contenido -->
+            <div class="relative z-10 h-full flex flex-col justify-center text-center text-white px-6">
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+                TU COMODIDAD<br>
+                <span class="text-3xl">NUESTRA PRIORIDAD</span> 
+                </h1>
+                    <p class="text-base md:text-lg mb-8 opacity-90">
+                    Llevamos el lavadero hasta vos
+                    </p>
+                <div class="flex gap-3 justify-center">
+                    <a href="#servicios" class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-gray-200 hover:text-blue-600 transition">
+                        VER SERVICIOS
+                    </a>
+                    <a href="https://wa.me/595972614469"  target="_blank" class="bg-gray-200 text-blue-600 px-4 py-2 rounded-full text-sm hover:bg-blue-600 hover:text-white transition">
+                        AGENDAR                    
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-12">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-4">
+                <p class="text-gray-600 text-lg leading-relaxed">
+                    En <span class="font-bold text-blue-600">WASH MOTORS</span> simplificamos tu rutina, limpiamos y cuidamos tu vehículo sin que tengas que moverte.
+                </p>
+            </div>
+        </div>
+        <div class="text-center mb-4"> 
+            <h2 class="inline-block text-blue-600 font-bold text-3xl mb-1 my-4 bg-white px-6 py-3 rounded-full border-2 border-blue-600">NUESTROS SERVICIOS</h2>
+        </div>
+    </section>
+
+    <!-- Services Section - Standard -->
+    <section id="servicios" class="pt-14 pb-16 bg-blue-600 text-white rounded-t-[60px]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="inline-block text-white font-bold text-4xl -mb-1 my-4 px-2 py-2 rounded-full gap-3 -mt-1">EXPERIENCIA ESTANDAR</h2>
+                <h3 class="text-xl font-semibold text-white mb-3">
+                    Lavados Classic Wash
+                </h3>
+                <p class="text-lg text-white/90 max-w-3xl mx-auto">
+                    La opción práctica para mantener tu vehículo limpio, cuidado y listo para el día a día.
+                </p>
+            </div>
+            <div class="relative" id="standard-slider">
+                <button id="standard-prev" class="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+
+                <button id="standard-next" class="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+
+                <div class="overflow-hidden">
+                    <div class="flex gap-6 pb-4 px-2 transition-transform duration-300" id="standard-track">
+                        <!-- Las tarjetas se inyectarán aquí con JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Separador -->
+    <div class="bg-blue-600">
+        <div class="h-12 bg-white rounded-t-[60px]"></div>
+    </div>
+
+    <!-- Services Section - Premium -->
+    <section class="bg-white pt-2 pb-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="inline-block text-blue-600 font-bold text-4xl -mb-1 my-4 px-2 py-2 rounded-full gap-3 -mt-1">EXPERIENCIA PREMIUM</h2>
+                <h3 class="text-xl font-semibold text-blue-600 mb-3"> 
+                    Lavados Full Wash
+                </h3>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    Para quienes buscan el máximo nivel de cuidado y detalle en su vehículo.
+                </p>
+            </div>
+ 
+            <div class="relative" id="premium-slider">
+                <button id="premium-prev" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-white/90 p-2 rounded-full hover:bg-white shadow-md">
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+
+                <button id="premium-next" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-white/90 p-2 rounded-full hover:bg-white shadow-md">
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+
+                <div class="overflow-hidden">
+                    <div class="flex gap-6 pb-6 px-2 items-stretch transition-transform duration-300" id="premium-track">
+                        <!-- Las tarjetas se inyectarán aquí con JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Corporate Experience Section -->  
+    <section id="experiencia-corporativa" class="pt-14 pb-6 bg-blue-600 text-white rounded-t-[60px]">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-6">
+                <h2 class="inline-block text-white font-bold text-4xl mb-3">
+                    EXPERIENCIA <span class="text-blue-200">CORPORATIVA</span>
+                </h2>
+                <p class="text-white text-blue-100 max-w-2xl mx-auto">
+                    ¿Tenés una flota de vehículos?<span> Nosotros la cuidamos por vos.</span>
+                </p>
+            </div>
+
+            <div class="mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Mantenimiento Profesional -->
+                    <div class="group bg-white rounded-2xl p-4 shadow-sm hover:shadow-md hover:bg-blue-50 transition-all duration-200 border border-gray-100 hover:border-blue-200">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-white text-blue-600 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 border-2 border-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-base font-bold text-blue-600 mb-1">Mantenimiento Profesional</h4>
+                                <p class="text-gray-600 text-sm">Tus vehículos limpios, protegidos y listos para trabajar todos los días.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reducción de Costos -->
+                    <div class="group bg-white rounded-2xl p-4 shadow-sm hover:shadow-md hover:bg-blue-50 transition-all duration-200 border border-gray-100 hover:border-blue-200">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-white text-blue-600 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 border-2 border-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6 9 12.75l4.286-4.286a11.948 11.948 0 0 1 4.306 6.43l.776 2.898m0 0 3.182-5.511m-3.182 5.51-5.511-3.181" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-base font-bold text-blue-600 mb-1">Reducción de Costos</h4>
+                                <p class="text-gray-600 text-sm">Evitá tiempos muertos y asegurá una imagen impecable frente a tus clientes.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soluciones Personalizadas -->
+                    <div class="group bg-white rounded-2xl p-4 shadow-sm hover:shadow-md hover:bg-blue-50 transition-all duration-200 border border-gray-100 hover:border-blue-200">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-white text-blue-600 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 border-2 border-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-base font-bold text-blue-600 mb-1">Soluciones Personalizadas</h4>
+                                <p class="text-gray-600 text-sm">Nos adaptamos a tu volumen, frecuencia y necesidades específicas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sin Interrupciones -->
+                    <div class="group bg-white rounded-2xl p-4 shadow-sm hover:shadow-md hover:bg-blue-50 transition-all duration-200 border border-gray-100 hover:border-blue-200">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-white text-blue-600 w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 border-2 border-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-base font-bold text-blue-600 mb-1">Sin Interrupciones</h4>
+                                <p class="text-gray-600 text-sm">Llevamos el lavadero a tu empresa sin afectar tus operaciones diarias.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Consultar Button -->
+                <div class="text-center mt-8 px-2">
+                    <a href="https://wa.me/595972614469?text=Hola!%20Quisiera%20consultar%20sobre%20el%20servicio%20corporativo%20para%20mi%20flota%20de%20vehículos." target="_blank" aria-label="Consultar servicio corporativo"
+                       class="inline-flex items-center justify-center gap-2 bg-white/20 backdrop-blur-sm text-white px-8 py-2.5 rounded-full font-semibold text-sm uppercase tracking-wide shadow-md border border-white/30 hover:bg-white/30 transform transition duration-150 hover:scale-105">
+                        Consultar servicio corporativo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section id="que-hacemos" class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- Title -->
+                <div class="text-center mb-8">
+                    <h2 class="inline-block text-blue-600 font-bold text-3xl mb-1 my-4 bg-gray-100 px-6 py-3 rounded-full border-2 border-blue-600">¿QUÉ HACEMOS?</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mt-4">
+                        En <span class="font-bold text-blue-600">Wash Motors</span> llevamos el lavadero hasta vos, porque tu tiempo vale. Simplificamos tu rutina, limpiamos y cuidamos tu vehículo sin que tengas que moverte.
+                    </p>
+                </div>
+
+                <!-- Bullet Points -->
+                <div class="space-y-3 mb-12">
+                    <div class="flex items-start gap-3">
+                        <div class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <p class="text-gray-700 font-semibold">Comodidad Total - Vamos Hasta Donde Estés</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <p class="text-gray-700 font-semibold">Puntualidad Garantizada en Cada Servicio</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <p class="text-gray-700 font-semibold">Resultados Profesionales Asegurados</p>
+                    </div>
+                </div>
+
+                <!-- Carousel -->
+                <div class="relative">
+                    <div class="relative overflow-hidden rounded-2xl bg-gray-200 h-64 md:h-80">
+                        <div class="carousel-container relative w-full h-full" id="imageCarousel">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vonixx.webp" alt="Productos" class="carousel-slide w-full h-full object-cover absolute transition-opacity duration-500 opacity-100">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/movil.png" alt="Móvil" class="carousel-slide w-full h-full object-cover absolute transition-opacity duration-500 opacity-0">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/equipo.png" alt="Equipo" class="carousel-slide w-full h-full object-cover absolute transition-opacity duration-500 opacity-0">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lavando.png" alt="Lavando" class="carousel-slide w-full h-full object-cover absolute transition-opacity duration-500 opacity-0">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/detalles.png" alt="Detalles" class="carousel-slide w-full h-full object-cover absolute transition-opacity duration-500 opacity-0">
+                        </div>
+
+                        <!-- Dots Indicator -->
+                        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                            <button class="carousel-dot w-2 h-2 rounded-full bg-white/60 transition" data-slide="0"></button>
+                            <button class="carousel-dot w-2 h-2 rounded-full bg-white/60 transition" data-slide="1"></button>
+                            <button class="carousel-dot w-2 h-2 rounded-full bg-white/60 transition" data-slide="2"></button>
+                            <button class="carousel-dot w-2 h-2 rounded-full bg-white/60 transition" data-slide="3"></button>
+                            <button class="carousel-dot w-2 h-2 rounded-full bg-white/60 transition" data-slide="4"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="agenda" class="pt-14 pb-20 bg-blue-600 text-white rounded-t-[60px]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="inline-block text-white font-bold text-4xl -mb-1 my-4 px-2 py-2 rounded-full gap-3 -mt-1">AGENDA TU LAVADO</h2>
+                <p class="text-white text-lg max-w-3xl mx-auto">
+                    Estamos listos para llevar nuestro servicio hasta donde estés. Contactanos ahora.
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <!-- WhatsApp Card -->
+                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition md:col-span-2">
+                        <h4 class="text-3xl font-bold text-green-600 mb-3">WhatsApp</h4>
+                        <p class="text-gray-600 mb-6">
+                            Escribinos directamente y te respondemos al instante.
+                        </p>
+                        <a href="https://wa.me/595972614469?text=Hola!%20Quiero%20agendar%20un%20lavado" target="_blank" class="block w-full bg-green-500 text-white text-center py-3 rounded-full font-bold hover:bg-green-600 transition">
+                            Abrir WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-6 shadow-lg md:flex md:items-center md:justify-between md:gap-8 space-y-6 md:space-y-0 border border-white/20">
+                    <div class="text-center md:text-left">
+                        <p class="text-white  text-lg">SEGUINOS EN NUESTRAS REDES</p>
+                        <p class="text-white/90 text-sm">Enterate de promos, novedades y ofertas exclusivas.</p>
+                    </div>
+
+                    <div class="flex items-center gap-8 justify-center md:justify-start mt-2 md:mt-0">
+                        <a href="https://www.facebook.com/" target="_blank" rel="noreferrer"
+                           class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-700 hover:bg-blue-800 text-white shadow-md transform transition duration-200"
+                           aria-label="Facebook" title="Facebook">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 4.99 3.66 9.12 8.44 9.95v-7.05H8.1v-2.9h2.33V9.03c0-2.3 1.37-3.57 3.46-3.57.99 0 2.03.18 2.03.18v2.23h-1.14c-1.12 0-1.47.7-1.47 1.42v1.7h2.5l-.4 2.9h-2.1v7.05C18.34 21.19 22 17.06 22 12.07z"/>
+                            </svg>
+                        </a>
+
+                        <a href="https://www.instagram.com/washmotors.py/" target="_blank" rel="noreferrer"
+                           class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-tr from-pink-500 to-yellow-400 hover:from-pink-600 hover:to-yellow-500 text-white shadow-md transform transition duration-200"
+                           aria-label="Instagram" title="Instagram">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.5A4.5 4.5 0 1 0 16.5 13 4.5 4.5 0 0 0 12 8.5zm6.5-.9a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1z"/>
+                            </svg>
+                        </a>
+
+                        <a href="https://wa.me/595972614469" target="_blank" rel="noreferrer"
+                           class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-md transform transition duration-200"
+                           aria-label="WhatsApp" title="WhatsApp">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.373 0 .068 5.284.068 11.813c0 2.082.544 4.12 1.578 5.93L0 24l6.52-1.644a11.8 11.8 0 0 0 5.48 1.34h.006c6.627 0 11.93-5.284 11.93-11.813 0-3.165-1.242-6.134-3.436-8.383zM12 21.5a9.63 9.63 0 0 1-4.93-1.32l-.35-.208L4 20l1.04-2.72-.23-.36A9.54 9.54 0 1 1 21.5 12 9.63 9.63 0 0 1 12 21.5zM17 14.2c-.25-.12-1.48-.73-1.7-.82-.23-.09-.4-.12-.57.12-.17.25-.65.82-.8.99-.15.17-.3.19-.55.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.38-1.73-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.42.09-.17.05-.32-.02-.44-.07-.12-.57-1.38-.78-1.89-.2-.5-.41-.43-.58-.44-.15-.01-.33-.01-.5-.01-.17 0-.45.06-.69.32-.24.26-.93.91-.93 2.22 0 1.3.95 2.55 1.08 2.73.13.18 1.86 2.84 4.52 3.87 2.66 1.04 2.66.69 3.14.65.48-.04 1.55-.63 1.77-1.24.22-.61.22-1.13.15-1.24-.08-.12-.28-.17-.53-.29z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <!-- Logo & Description -->
+                <div>
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logotipo%20Wash%20Motors_azul-BLOFY7zVPddQlEoCa8XqoO94RodFUi.png" alt="WASH MOTORS" class="h-12 mb-4">
+                    <p class="text-gray-400">
+                        Tu comodidad nuestra prioridad. Servicio de lavado profesional a domicilio.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="text-gray-400 hover:text-white transition">Inicio</a></li>
+                        <li><a href="#servicios" class="text-gray-400 hover:text-white transition">Servicios</a></li>
+                        <li><a href="#experiencia-corporativa" class="text-gray-400 hover:text-white transition">Experiencia Corporativa</a></li>
+                        <li><a href="#que-hacemos" class="text-gray-400 hover:text-white transition">Qué Hacemos</a></li>
+                        <li><a href="#agenda" class="text-gray-400 hover:text-white transition">Agenda tu lavado</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Información de Contacto</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>WhatsApp: +54 9 123 456 7890</li>
+                        <li>Email: info@washmotors.com</li>
+                        <li>Horario: Lun - Sáb: 8:00 - 20:00</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 WASH MOTORS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TU JS PROPIO -->
+    <script src="./js/script.js?v=1.10" defer></script>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="md:hidden fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur shadow-2xl">
+        <div class="flex justify-around items-center py-2 text-xs font-semibold text-gray-700">
+            <a href="#inicio" class="flex flex-col items-center gap-1 hover:text-blue-600">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"/>
+                    <path d="M9 22V12h6v10M2 10.6L12 2l10 8.6"/>
+                </svg>
+                <span>Inicio</span>
+            </a>
+            <a href="#servicios" class="flex flex-col items-center gap-1 hover:text-blue-600">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+                <span>Servicios</span>
+            </a>
+            <a href="#experiencia-corporativa" class="flex flex-col items-center gap-1 hover:text-blue-600 text-center">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/>
+                    <circle cx="12" cy="10" r="3"/>
+                    <circle cx="12" cy="12" r="10"/>
+                </svg>
+                <span class="leading-tight">Corporativo</span>
+            </a>
+            <a href="#que-hacemos" class="flex flex-col items-center gap-1 hover:text-blue-600">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                <span>Qué hacemos</span>
+            </a>
+            <a href="#agenda" class="flex flex-col items-center gap-1 hover:text-blue-600">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>Contacto</span>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>
