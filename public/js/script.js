@@ -1,20 +1,25 @@
 // 🔗 CONFIGURACIÓN - Detecta ambiente (local o Netlify)
-const API_URL = window.location.hostname === 'localhost' 
-    ? 'http://localhost:3000'
-    : '/.netlify/functions';
+const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const API_ENDPOINT = isLocalhost ? '/items' : '/.netlify/functions/items';
+
+console.log(`🌐 Ambiente: ${isLocalhost ? 'LOCALHOST' : 'NETLIFY'}`);
+console.log(`📡 Endpoint: ${API_ENDPOINT}`);
 
 // Carga datos desde la API
 async function loadServices() {
     try {
-        const endpoint = window.location.hostname === 'localhost'
-            ? `${API_URL}/items`
-            : `${API_URL}/items`;
+        console.log(`🔄 Cargando desde: ${API_ENDPOINT}`);
+        const response = await fetch(API_ENDPOINT);
         
-        const response = await fetch(endpoint);
-        if (!response.ok) throw new Error('Error en la API');
-        return await response.json();
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        
+        const data = await response.json();
+        console.log('✅ Datos cargados:', data);
+        return data;
     } catch (error) {
-        console.error('Error cargando servicios:', error);
+        console.error('❌ Error cargando servicios:', error);
         return {
             items: [],
             grouped: {},
@@ -162,19 +167,25 @@ function createServiceCard(item, maxPrice, isPremium = false) {
 
 // Renderiza todas las tarjetas
 async function renderServices() {
+    console.log('🚀 Renderizando servicios...');
     const data = await loadServices();
+    console.log('📊 Datos recibidos:', data);
     
     const standardTrack = document.getElementById('standard-track');
     const premiumTrack = document.getElementById('premium-track');
     
+    console.log('🔍 Elementos encontrados:', { standardTrack, premiumTrack });
+    
     if (!standardTrack || !premiumTrack) {
-        console.error('Tracks no encontrados');
+        console.error('❌ Tracks no encontrados');
         return;
     }
 
     const standardItems = data.grouped?.['Estandar'] || [];
     const premiumItems = data.grouped?.['Premium'] || [];
     const maxPrice = data.max_price || 0;
+
+    console.log('📋 Items encontrados:', { standardItems: standardItems.length, premiumItems: premiumItems.length, maxPrice });
 
     // Renderizar estándar
     standardTrack.innerHTML = standardItems
@@ -185,6 +196,8 @@ async function renderServices() {
     premiumTrack.innerHTML = premiumItems
         .map(item => createServiceCard(item, maxPrice, true))
         .join('');
+
+    console.log('✅ Servicios renderizados');
 
     // Re-inicializar funcionalidad después de renderizar
     initializeAfterRender();
