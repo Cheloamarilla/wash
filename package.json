@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "netlify dev",
+    "dev": "node server.js",
     "build": "echo 'Build successful'"
   },
   "keywords": ["wash", "motors", "lavado"],

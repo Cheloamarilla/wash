@@ -35,63 +35,83 @@ function createServiceCard(item, maxPrice, isPremium = false) {
     const nombre = item['Nombre de lavado'] || 'Servicio';
     const descripcion = item['Descripcion'] || '';
     const tiempo = item['Demora'] || 'N/A';
-    const detalle = item['Detalle de lavado'] || '';
+    let detalle = item['Detalle de lavado'] || '';
     
-    const detallesList = detalle
+    // Normalizar saltos de línea (manejar \r\n, \r, \n)
+    detalle = detalle.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+    
+    // Dividir por saltos de línea y crear lista HTML
+    const detallesArray = detalle
         .split('\n')
-        .filter(line => line.trim())
-        .map(line => `<div class="flex items-start">
-                        <span class="text-white mr-3 flex-shrink-0">✓</span>
-                        <span>${line.trim().toLowerCase().charAt(0).toUpperCase() + line.trim().toLowerCase().slice(1)}</span>
+        .map(line => line.trim())
+        .filter(line => line.length > 0);
+    
+    console.log(`🎨 Tarjeta "${nombre}": ${detallesArray.length} detalles encontrados`);
+    if (detallesArray.length > 0) {
+        console.log(`   Primeros detalles:`, detallesArray.slice(0, 2));
+    }
+    
+    // Determinar colores según si es premium o estándar
+    const detailTextColor = isPremium ? 'text-white/95' : 'text-blue-700';
+    const detailCheckColor = isPremium ? 'text-white' : 'text-blue-600';
+    
+    const detallesList = detallesArray
+        .map(line => `<div class="flex items-start gap-2">
+                        <div class="flex-shrink-0">
+                            <span class="${detailCheckColor} font-bold text-base">✓</span>
+                        </div>
+                        <div class="${detailTextColor} font-sans">${line}</div>
                     </div>`)
-        .join('');
+        .join('') || '<div class="text-center py-4 text-white/90">Sin detalles disponibles</div>';
+
+    console.log(`🔧 HTML para "${nombre}":`, detallesList.substring(0, 150));
 
     if (isMax) {
         // Estilo Premium (Dorado/Naranja)
         return `
-            <div class="service-card flex-shrink-0 w-80 h-auto min-h-[18rem] bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl p-4 relative overflow-hidden cursor-pointer" style="perspective: 1000px;">
-                <div class="service-card-inner w-full h-full relative transition-transform duration-500" style="transform-style: preserve-3d;">
+            <div class="service-card flex-shrink-0 w-80 h-[24rem] bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl overflow-hidden cursor-pointer font-sans">
+                <div class="service-card-inner w-full h-full relative transition-transform duration-500">
                     <!-- Front -->
-                    <div class="service-card-front w-full h-full absolute inset-0 p-4 flex flex-col" style="backface-visibility: hidden;">
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="bg-white/20 backdrop-blur-sm w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-                                </svg>
+                    <div class="service-card-front w-full h-full flex flex-col justify-between p-6">
+                        <div class="flex-1 flex flex-col">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="bg-white/20 backdrop-blur-sm w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                    </svg>
+                                </div>
+                                <h4 class="text-xl font-bold mb-0 uppercase">${nombre}</h4>
                             </div>
-                            <h4 class="text-lg font-bold mb-0 whitespace-nowrap uppercase">${nombre}</h4>
+                            <p class="text-base leading-relaxed mb-6 flex-1" style="text-align: justify;">${descripcion}</p>
+                            <div class="border-t border-white/30 pt-4 pb-2">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-white/90 text-sm font-medium">Precio:</span>
+                                    <span class="text-2xl font-bold">${item['Precio']} Gs</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-white/90 text-sm font-medium">Duración:</span>
+                                    <span class="text-white/90 text-sm font-medium">${tiempo}</span>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-sm leading-snug mb-2" style="text-align: justify;">${descripcion}</p>
-                        <div class="border-t border-white/30 pt-2 pb-1 mb-2">
-                            <div class="flex justify-between items-center">
-                                <span class="text-white/90 text-xs">Precio:</span>
-                                <span class="text-lg font-bold">${item['Precio']} Gs</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-white/90 text-xs">Duración:</span>
-                                <span class="text-white/90 text-xs">${tiempo}</span>
-                            </div>
-                        </div>
-                        <div class="flex gap-2 mt-2">
-                            <a href="https://wa.me/595972614469?text=Hola!%20Me%20interesaría%20agendar%20el%20${encodeURIComponent(nombre)}" target="_blank" class="flex-1 block w-full bg-white text-orange-500 text-center py-2 rounded-full font-bold hover:bg-gray-100 transition shadow-lg text-sm">
+                        <div class="flex gap-3 pt-2">
+                            <a href="https://wa.me/595972614469?text=Hola!%20Me%20interesaría%20agendar%20el%20${encodeURIComponent(nombre)}" target="_blank" class="flex-1 block w-full bg-white text-orange-500 text-center py-3 rounded-full font-bold hover:bg-gray-100 transition shadow-lg text-base">
                                 Agendar 
                             </a>
-                            <button class="flip-btn flex-1 bg-white text-orange-500 text-center py-2 rounded-full font-bold hover:bg-gray-100 transition shadow-lg text-sm">
+                            <button class="flip-btn flex-1 bg-white text-orange-500 text-center py-3 rounded-full font-bold hover:bg-gray-100 transition shadow-lg text-base">
                                 Ver más
                             </button>
                         </div>
                     </div>
                     <!-- Back -->
-                    <div class="service-card-back w-full h-full absolute inset-0 p-4 flex flex-col justify-between bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl" style="backface-visibility: hidden; transform: rotateY(180deg);">
-                        <div>
-                            <h4 class="text-lg font-bold mb-6 text-center">Detalle de lavado</h4>
-                            <div class="detail-container flex-grow flex flex-col">
-                                <blockquote class="detail-list text-white/90 text-xs leading-tight space-y-2 mb-2 pl-3 border-l-2 border-white/30 italic">
-                                    ${detallesList}
-                                </blockquote>
+                    <div class="service-card-back w-full h-full flex flex-col justify-between p-6 bg-gradient-to-br from-yellow-400 to-orange-500 text-white rounded-3xl font-sans">
+                        <div class="flex-1 overflow-y-auto">
+                            <h4 class="text-xl font-bold mb-5 text-center font-sans">Detalle de lavado</h4>
+                            <div class="detail-list text-white/90 text-sm leading-relaxed space-y-1 pl-4 border-l-3 border-white/30">
+                                ${detallesList}
                             </div>
                         </div>
-                        <button class="flip-btn w-full bg-white text-orange-500 text-center py-2 rounded-full font-bold hover:bg-gray-100 transition shadow-lg text-sm">
+                        <button class="flip-btn w-full bg-white text-orange-500 text-center py-3 rounded-full font-bold hover:bg-gray-100 transition shadow-lg text-base mt-3">
                             Volver
                         </button>
                     </div>
@@ -113,49 +133,49 @@ function createServiceCard(item, maxPrice, isPremium = false) {
         }
         
         return `
-            <div class="service-card flex-shrink-0 w-80 h-auto min-h-[18rem] ${bgColor} ${isPremium ? '' : 'border-2 border-blue-200'} rounded-3xl p-4 relative overflow-hidden cursor-pointer" style="perspective: 1000px;">
-                <div class="service-card-inner w-full h-full relative transition-transform duration-500" style="transform-style: preserve-3d;">
+            <div class="service-card flex-shrink-0 w-80 h-[24rem] ${bgColor} ${isPremium ? '' : 'border-2 border-blue-200'} rounded-3xl overflow-hidden cursor-pointer font-sans">
+                <div class="service-card-inner w-full h-full relative transition-transform duration-500">
                     <!-- Front -->
-                    <div class="service-card-front w-full h-full absolute inset-0 p-4 flex flex-col" style="backface-visibility: hidden;">
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="${isPremium ? 'bg-white/20' : 'bg-blue-50'} w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <svg class="w-5 h-5 ${isPremium ? 'text-white' : 'text-blue-600'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
+                    <div class="service-card-front w-full h-full flex flex-col justify-between p-6">
+                        <div class="flex-1 flex flex-col">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="${isPremium ? 'bg-white/20' : 'bg-blue-50'} w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 ${isPremium ? 'text-white' : 'text-blue-600'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <h4 class="text-xl font-bold ${textColor} m-0 uppercase">${nombre}</h4>
                             </div>
-                            <h4 class="text-lg font-bold ${textColor} m-0 uppercase">${nombre}</h4>
+                            <p class="text-base leading-relaxed mb-6 flex-1 ${isPremium ? 'text-white/90' : 'text-blue-800'}" style="text-align: justify;">${descripcion}</p>
+                            <div class="border-t ${isPremium ? 'border-blue-600' : 'border-gray-200'} pt-4 pb-2">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="${isPremium ? 'text-white' : 'text-blue-700'} text-sm font-medium">Precio:</span>
+                                    <span class="text-2xl font-bold ${textColor}">${item['Precio']} Gs</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="${isPremium ? 'text-white/90' : 'text-blue-500'} text-sm font-medium">Duración:</span>
+                                    <span class="${isPremium ? 'text-white/90' : 'text-blue-500'} text-sm font-medium">${tiempo}</span>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-sm leading-snug mb-2 ${isPremium ? 'text-white/90' : 'text-blue-800'}">${descripcion}</p>
-                        <div class="border-t ${isPremium ? 'border-blue-600' : 'border-gray-200'} pt-2 pb-1 mb-2">
-                            <div class="flex justify-between items-center">
-                                <span class="${isPremium ? 'text-white' : 'text-blue-700'} text-xs">Precio:</span>
-                                <span class="text-lg font-bold ${textColor}">${item['Precio']} Gs</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="${isPremium ? 'text-white/90' : 'text-blue-500'} text-xs">Duración:</span>
-                                <span class="${isPremium ? 'text-white/90' : 'text-blue-500'} text-xs">${tiempo}</span>
-                            </div>
-                        </div>
-                        <div class="flex gap-2 mt-2">
-                            <a href="https://wa.me/595972614469?text=Hola!%20Me%20interesaría%20agendar%20el%20${encodeURIComponent(nombre)}" target="_blank" class="flex-1 block w-full ${isPremium ? 'bg-white text-blue-600' : 'bg-blue-600 text-white'} text-center py-2 rounded-full font-bold hover:opacity-80 transition text-sm">
+                        <div class="flex gap-3 pt-2">
+                            <a href="https://wa.me/595972614469?text=Hola!%20Me%20interesaría%20agendar%20el%20${encodeURIComponent(nombre)}" target="_blank" class="flex-1 block w-full ${isPremium ? 'bg-white text-blue-600' : 'bg-blue-600 text-white'} text-center py-3 rounded-full font-bold hover:opacity-80 transition text-base">
                                 Agendar
                             </a>
-                            <button class="flip-btn flex-1 ${isPremium ? 'bg-white/20 text-white' : 'bg-blue-50 text-blue-700'} text-center py-2 rounded-full font-bold hover:opacity-80 transition text-sm">
+                            <button class="flip-btn flex-1 ${isPremium ? 'bg-white/20 text-white' : 'bg-blue-50 text-blue-700'} text-center py-3 rounded-full font-bold hover:opacity-80 transition text-base">
                                 Ver más
                             </button>
                         </div>
                     </div>
                     <!-- Back -->
-                    <div class="service-card-back w-full h-full absolute inset-0 p-4 flex flex-col justify-between ${isPremium ? 'bg-blue-700' : 'bg-blue-50'} ${darkText} rounded-3xl" style="backface-visibility: hidden; transform: rotateY(180deg);">
-                        <div>
-                            <h4 class="text-lg font-bold mb-6 text-center ${isPremium ? 'text-white' : ''}">Detalle de lavado</h4>
-                            <div class="detail-container flex flex-col">
-                                <blockquote class="detail-list ${isPremium ? 'text-white' : 'text-blue-700'} text-sm leading-tight space-y-2 mb-2 pl-3 border-l-2 ${isPremium ? 'border-white/30' : 'border-blue-200'} italic">
-                                    ${detallesList}
-                                </blockquote>
+                    <div class="service-card-back w-full h-full flex flex-col justify-between p-6 ${isPremium ? 'bg-blue-700' : 'bg-blue-50'} ${darkText} rounded-3xl font-sans">
+                        <div class="flex-1 overflow-y-auto">
+                            <h4 class="text-xl font-bold mb-5 text-center font-sans">Detalle de lavado</h4>
+                            <div class="detail-list ${isPremium ? 'text-white/90' : 'text-blue-700'} text-sm leading-relaxed space-y-1 pl-4 border-l-3 ${isPremium ? 'border-blue-600' : 'border-blue-200'}">
+                                ${detallesList}
                             </div>
                         </div>
-                        <button class="flip-btn w-full ${isPremium ? 'bg-white text-blue-600' : 'bg-blue-600 text-white'} text-center py-2 rounded-full font-bold hover:opacity-80 transition text-sm">
+                        <button class="flip-btn w-full ${isPremium ? 'bg-white/20 text-white' : 'bg-blue-100 text-blue-700'} text-center py-3 rounded-full font-bold hover:opacity-80 transition text-base mt-3">
                             Volver
                         </button>
                     </div>
@@ -170,6 +190,17 @@ async function renderServices() {
     console.log('🚀 Renderizando servicios...');
     const data = await loadServices();
     console.log('📊 Datos recibidos:', data);
+    
+    // Log de items con detalles para debugging
+    if (data.items && data.items.length > 0) {
+        console.log('📝 Primer item completo:', data.items[0]);
+        console.log('📝 Detalles de todos los items:', data.items.map((item, idx) => ({
+            idx,
+            nombre: item['Nombre de lavado'],
+            detalle_length: item['Detalle de lavado']?.length || 0,
+            detalle_preview: item['Detalle de lavado']?.substring(0, 80) || 'SIN DETALLES'
+        })));
+    }
     
     const standardTrack = document.getElementById('standard-track');
     const premiumTrack = document.getElementById('premium-track');
@@ -211,10 +242,11 @@ function initializeAfterRender() {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            const inner = btn.closest('.service-card-inner');
+            const card = btn.closest('.service-card');
+            const inner = card?.querySelector('.service-card-inner');
             if (inner) {
-                const isFlipped = inner.style.transform === 'rotateY(180deg)';
-                inner.style.transform = isFlipped ? 'rotateY(0deg)' : 'rotateY(180deg)';
+                inner.classList.toggle('flipped');
+                console.log('✅ Card flipped');
             }
         });
     });

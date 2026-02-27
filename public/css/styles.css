@@ -119,8 +119,8 @@ header {
     margin-bottom: 0.4rem;
 }
 
+/* Detail list styling - removed max-height to allow all details to show */
 .service-card .detail-list {
-    max-height: 8rem;
     overflow: auto;
 }
 
